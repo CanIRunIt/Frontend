@@ -41,11 +41,13 @@
   background: #03001e;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-font-family: 'Akronim';
-}
+ font-family: 'Akronim'; 
+/* font-family: 'Bangers' ;
+ */}
 
 .landing-grid {
-  font-family: 'Yeon Sung';
+  font-family: 'Bangers' ;/* 
+  font-family: 'Yeon Sung'; */
   font-size: 36px;
   text-align: center;
   background: #03001e;  /* fallback for old browsers */
@@ -58,8 +60,9 @@ position: relative;
   height: 1900%;
 }
 
-.landing-grid h1{
-  color: #3eeedf;
+.landing-grid h1{/* 
+  color: #3eeedf; */
+  color: whitesmoke
 }
 
 
@@ -70,4 +73,15 @@ position: relative;
   width: 80%;
   
   padding-top: 5em;
+}
+
+.gamesel {
+  padding-top: 50%;
+  
+  font-family: 'ZCOOL QingKe HuangYou' ;
+
+}
+
+.btn {
+  background-color: crimson
 }

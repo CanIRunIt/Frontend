@@ -12,7 +12,7 @@ class Home extends Component {
             alt="mainpic"
             className="mainpic">
             </img>
-            <Link to='/runtest'>  <h1>TEST NOW</h1> </Link>
+            <Link to='/gameselect'>  <h1>TEST NOW</h1> </Link>
 
 {/*             <div className="banner-text">
             <h1>Full Stack Web Developer</h1>
