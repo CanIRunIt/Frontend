@@ -5,9 +5,9 @@ import { BrowserRouter,Switch,Route } from 'react-router-dom';
 import Home from './components/landingpage/home';
 import Rigform from './components/test/rigform';
 import Gameselect from './components/test/gameselect';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Rigscore from './components/rigscore/rigscore';
+import Score from './components/score/score';
+
 function App() {
   return (
     <BrowserRouter>
@@ -17,7 +17,7 @@ function App() {
      <Route exact path='/' component={Home}></Route>
      <Route path='/runtest' component={Rigform}></Route>
      <Route path='/gameselect' component={Gameselect}></Route>
-     <Route path='/rigscore' component={Rigscore}></Route>
+     <Route path='/score' component={Score}></Route>
 
      </Switch>
     </div>

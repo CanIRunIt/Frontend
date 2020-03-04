@@ -38,10 +38,9 @@
 }
 
 .hcolor {
-  background: #03001e;  /* fallback for old browsers */
+   background: #03001e;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
- font-family: 'Akronim'; 
+background: linear-gradient(to right, #000000, #0f9b0f); font-family: 'Akronim'; 
 /* font-family: 'Bangers' ;
  */}
 
@@ -52,8 +51,7 @@ background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3
   text-align: center;
   background: #03001e;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-position: relative;
+background: linear-gradient(to right, #000000, #0f9b0f);position: relative;
   top: 0;
   left: 0;
   width: 100%;

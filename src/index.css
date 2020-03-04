@@ -8,8 +8,7 @@ body {
   background: url(/img/mario-bg.png) no-repeat;
   background-size: 100%;
   background-position:bottom;
-  background: linear-gradient(to right, #fdeff9, #ec38bc, #7303c0, #03001e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  background: linear-gradient(to right, #000000, #0f9b0f);
   min-height: 100%;
 }
 
