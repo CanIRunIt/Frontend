@@ -12,10 +12,12 @@ const options = [
 class Gameselect extends React.Component {
   state = {
     selectedOption: null,
+    
   };
   handleChange = selectedOption => {
     this.setState({ selectedOption });
     console.log(`Option selected:`, selectedOption);
+    
   };
   render() {
     const { selectedOption } = this.state;
@@ -23,25 +25,30 @@ class Gameselect extends React.Component {
     return (
         
         <div className="container" style={{textAlign: 'center'}}>
+        <h1>Game to run test on: {this.state.Game}</h1>
         <div className="gamesel">
         <h5 className="yellow-text text-darken-3" style={{ textAlign: 'center' }}>Game Select</h5>
-            
+        
+      <button className="btn waves-effect waves-light btn" name="action" color="yellow"><Link to='/runtest' style={{textDecoration: 'none', color: 'white'}}>next</Link>
+      <Link to='/runtest' style={{textDecoration: 'none', color: 'white'}}><i className="material-icons right">send</i></Link>
+  </button>    
       <Select
         value={selectedOption}
         onChange={this.handleChange}
         options={options}
         
       />
+
       </div>
       
-      <div style={{marginTop: '1px'}}>
-      <button className="btn waves-effect waves-light btn" name="action" color="yellow"><Link to='/runtest' style={{textDecoration: 'none', color: 'white'}}>next</Link>
-      <Link to='/runtest' style={{textDecoration: 'none', color: 'white'}}><i className="material-icons right">send</i></Link>
-  </button>
-  </div>
+      
       </div>
     );
   }
 }
 
 export default Gameselect;
+
+
+
+
