@@ -1,7 +1,9 @@
 import React from 'react';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
- 
+import axios from 'axios';
+import gamerigscore from '../gamerigscore/gamerigscore';
+
 const options = [
   {value: 'The Eternal Castle Remastered', label: 'The Eternal Castle Remastered' },
   {value:  'Bury Me, My Love', label: 'Bury Me, My Love' },
@@ -12,6 +14,8 @@ const options = [
 class Gameselect extends React.Component {
   state = {
     selectedOption: null,
+    ermessage : false,
+    games: null
     
   };
   handleChange = selectedOption => {
@@ -19,6 +23,34 @@ class Gameselect extends React.Component {
     console.log(`Option selected:`, selectedOption);
     
   };
+
+  componentDidMount () {
+    axios.get('url')
+    .then(response => {
+      console.log(response)
+      this.setState({games: response.data})
+    }).catch(error => {
+      this.setState({ermessage: true})
+    })
+    
+  }
+
+  componentDidUpdate () {
+    if(!this.state.selectedOption) {
+    let game = this.state.selectedOption
+    axios.post('url', game)
+    .then(response => {
+      console.log(response)
+    }).catch(error => {
+      this.setState({ermessage: true})
+    })
+    }
+  }
+
+
+
+
+
   render() {
     const { selectedOption } = this.state;
  
@@ -41,7 +73,9 @@ class Gameselect extends React.Component {
 
       </div>
       
-      
+      {/* <Gamerigscore
+      cpuscore = */}
+
       </div>
     );
   }

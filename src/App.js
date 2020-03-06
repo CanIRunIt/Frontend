@@ -7,6 +7,7 @@ import Rigform from './components/test/rigform';
 import Gameselect from './components/test/gameselect';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Score from './components/score/score';
+import Post from './components/test/post';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
      <Route path='/runtest' component={Rigform}></Route>
      <Route path='/gameselect' component={Gameselect}></Route>
      <Route path='/score' component={Score}></Route>
+     <Route path='/post' component={Post}></Route>
+
 
      </Switch>
     </div>

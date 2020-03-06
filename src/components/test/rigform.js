@@ -1,10 +1,15 @@
 import React,{ Component } from 'react';
+import axios from 'axios';
+import Rigscore from '../rigscore/rigscore';
 
 class Rigform extends Component {
     state = {
         cpu: '',
         gpu: '',
-        ram: ''
+        ram: '',
+        cpuscore: '',
+        gpuscore: '',
+        ramscore: ''
 
     }
 
@@ -20,11 +25,32 @@ class Rigform extends Component {
         e.preventDefault();
         console.log(this.state)
 
+        const rig = {
+         cpu : this.state.cpu,
+         gpu : this.state.gpu,
+         ram : this.state.ram
+        }
+
+        axios.post('url', rig)
+        .then(response => {
+            this.setState({
+                cpuscore: response.data.cpuscore,
+                gpuscore: response.data.gpuscore,
+                ramscore: response.data.ramscore,
+            })
+
+        }).catch(error => {
+            this.setState({ermessage: true})
+        })
+
+
+
     
     }
 
 
     render () {
+
         return (
             <div className="container">
             <form onSubmit={this.handlePost} className="white">
@@ -52,8 +78,23 @@ class Rigform extends Component {
             <div className="input-field">
             <button className="btn pink lighten-1 z-depth-1">Run Test</button>
                 </div>
+
+                
             
             </form>
+            
+            
+        
+            {this.state.cpuscore ?
+                <Rigscore 
+                cpuscore = {this.state.cpuscore}
+                gpuscore = {this.state.gpuscore}
+                ramscore = {this.state.ramscore}
+                /> : null }
+
+        
+
+
             <div className="rigform">
                 <h3>CPU : {this.state.cpu}</h3>
                 <h3>GPU : {this.state.gpu}</h3>
