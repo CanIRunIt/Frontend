@@ -44,7 +44,7 @@ class Post extends Component {
             this.setState({posts: updatedposts})
             this.setState({
                 cpuscore: 60,
-                gpuscore: 40,
+                gpuscore: 80,
                 ramscore: 80
             })
             return
@@ -90,7 +90,7 @@ class Post extends Component {
           </div>
           {posts}
 
-          {this.state.ramscore ?
+          {this.state.gpuscore ?
           <Gamerigscore
           cpuscore = {this.state.cpuscore}
           gpuscore = {this.state.gpuscore}
