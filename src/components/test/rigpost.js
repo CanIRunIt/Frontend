@@ -1199,6 +1199,12 @@ class Rigpost extends Component {
 
     }
 
+    handleChangeram = selectedOptionram => {
+        this.setState({ selectedOptionram });
+        console.log(`Option selected:`, selectedOptionram);
+        
+      };
+
     handleChangegpu = selectedOption => {
         this.setState({ selectedOption });
         console.log(`Option selected:`, selectedOption);
@@ -1248,10 +1254,13 @@ class Rigpost extends Component {
         
     const { selectedOption } = this.state;
     const { selectedOptioncpu } = this.state;
+    const { selectedOptionram } = this.state;
+
 
 
         return (
-            <div className="container">
+       
+       <div className="container">
             <form onSubmit={this.handlePost} className="white">
             <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Can I run it</h5>
             
@@ -1266,6 +1275,7 @@ class Rigpost extends Component {
             <input type ="text" id="gpu" onChange={this.handleChnge}></input>
             </div> */}
 
+        <p>CPU</p>
 <Select
         value={selectedOptioncpu}
         onChange={this.handleChangecpu}
@@ -1273,19 +1283,26 @@ class Rigpost extends Component {
         
       />
 
+      <p>GPU</p>
 <Select
         value={selectedOption}
         onChange={this.handleChangegpu}
         options={gpus}
         
       />
+      <p>RAM</p>
+<Select
+        value={selectedOptionram}
+        onChange={this.handleChangeram}
+        options={rams}
+        
+      />
 
-
-            <div className="input-field">
+       {/*      <div className="input-field">
             <label htmlFor="ram">RAM</label>
             <input type ="text" id="ram" onChange={this.handleChnge}></input>
             </div>
- 
+  */}
 
 
          
