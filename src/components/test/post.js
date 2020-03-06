@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
+import Gamerigscore from '../gamerigscore/gamerigscore';
 
 const options = [
     {value: 'The Eternal Castle Remastered', label: 'The Eternal Castle Remastered' },
@@ -16,14 +17,21 @@ class Post extends Component {
     state = {
         ermessage : false,
         selectedOption: null,
-        posts: []
+        posts: [],
+        cpuscore: '',
+        gpuscore: '',
+        ramscore: ''
     }
 
     componentDidUpdate () {
       /*   if(this.state.posts){
             return
         }
-       */  axios.get('https://jsonplaceholder.typicode.com/posts')
+       */
+      if(this.state.posts[0]){
+          return
+      }  
+      axios.get('https://jsonplaceholder.typicode.com/posts')
         .then(response => {
             console.log(response)
             const posts = response.data.slice(0,5)
@@ -34,6 +42,11 @@ class Post extends Component {
                 }
             })
             this.setState({posts: updatedposts})
+            this.setState({
+                cpuscore: 60,
+                gpuscore: 40,
+                ramscore: 80
+            })
             return
 
         }).catch(er => {
@@ -51,7 +64,7 @@ class Post extends Component {
     render () {
         
         let posts = null
-        if(this.state.title){
+         if(!this.state.ermessage){
             posts = this.state.posts.map(post => {
                 return <div style={{textAlign: 'center'}}>{post.title}</div>
             })
@@ -76,6 +89,15 @@ class Post extends Component {
     
           </div>
           {posts}
+
+          {this.state.ramscore ?
+          <Gamerigscore
+          cpuscore = {this.state.cpuscore}
+          gpuscore = {this.state.gpuscore}
+          ramcore = {this.state.ramscore}/>
+          : null}
+
+          
           </div>
 
 
