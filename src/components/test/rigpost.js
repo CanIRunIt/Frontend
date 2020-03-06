@@ -1187,9 +1187,11 @@ class Rigpost extends Component {
         ramscore: '',
     selectedOption: null,
     selectedOptioncpu: null,
-    
+
+  
 
     }
+
 
     handleChnge = (e) => {
         this.setState({
@@ -1275,7 +1277,7 @@ class Rigpost extends Component {
             <input type ="text" id="gpu" onChange={this.handleChnge}></input>
             </div> */}
 
-        <p>CPU</p>
+        <p style={{paddingTop: '3px'}}>CPU</p>
 <Select
         value={selectedOptioncpu}
         onChange={this.handleChangecpu}
@@ -1283,14 +1285,14 @@ class Rigpost extends Component {
         
       />
 
-      <p>GPU</p>
+      <p style={{paddingTop: '3px'}}>GPU</p>
 <Select
         value={selectedOption}
         onChange={this.handleChangegpu}
         options={gpus}
         
       />
-      <p>RAM</p>
+      <p style={{paddingTop: '3px'}}>RAM</p>
 <Select
         value={selectedOptionram}
         onChange={this.handleChangeram}
@@ -1331,7 +1333,11 @@ class Rigpost extends Component {
                 <h3>GPU : {this.state.gpu}</h3>
                 <h3>RAM : {this.state.ram}</h3>
             </div>
-        */}     </div>
+        */}     
+        
+        
+
+        </div>
 
         )
     }

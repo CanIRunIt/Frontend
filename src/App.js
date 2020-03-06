@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Score from './components/score/score';
 import Post from './components/test/gamepost';
 import Rigpost from './components/test/rigpost';
+import Gamedynamic from './components/test/gamedynamic';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
      <Route path='/score' component={Score}></Route>
      <Route path='/post' component={Post}></Route>
      <Route path='/rigpost' component={Rigpost}></Route>
+     <Route path='/gamedynamic' component={Gamedynamic}></Route>
 
 
      </Switch>
