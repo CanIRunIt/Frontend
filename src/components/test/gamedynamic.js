@@ -73,6 +73,18 @@ const gamesjson = [
 
 class Gamedynamic extends Component {
 
+    state = {
+        game : ''
+    }
+
+    handleChnge = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+
+        })
+
+    }
+
     gamepickHandler  (gametitle) {
         console.log("hey")
         console.log(gametitle);
@@ -80,13 +92,23 @@ class Gamedynamic extends Component {
 
     render () {
         return (
-            <div>
+            <div style={{textAlign: 'center'}} className="gamedynamic">
+
+            <div className="input-field" style={{color: 'white'}}>
+            <label htmlFor="game">Game</label>
+            <input type ="text" id="game" onChange={this.handleChnge}></input>
+            </div>
+
+
+            <h1 style={{color: 'white'}}>Game list</h1>
                 {gamesjson.map(game => {
                     
                     return (
-                        <div>
-                    <button style={{textAlign: 'center'}} onClick={() => this.gamepickHandler(game.title)}>{game.title}</button>
-                   </div>
+                        <div style={{textAlign: 'center'}}>
+                        {game.title.replace(" system requirements","") == this.state.game ? 
+                    <button style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title)}>{game.title.replace(" system requirements","")}</button>
+                   
+                     : null   } </div>
                     )
                 })}
             </div>

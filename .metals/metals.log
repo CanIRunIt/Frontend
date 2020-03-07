@@ -7,3 +7,7 @@ WARN  no build tool detected in workspace 'c:\Users\Chulaka\R\canirun1\Frontend'
 INFO  shutting down Metals
 INFO  time: initialize in 3.29s
 WARN  no build tool detected in workspace 'c:\Users\Chulaka\R\canirun1\Frontend'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+INFO  time: initialize in 2.35s
+WARN  no build tool detected in workspace 'c:\Users\Chulaka\R\canirun1\Frontend'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+INFO  time: initialize in 3.01s
+WARN  no build tool detected in workspace 'c:\Users\Chulaka\R\canirun1\Frontend'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
