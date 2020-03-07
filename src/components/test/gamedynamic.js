@@ -94,9 +94,10 @@ class Gamedynamic extends Component {
         return (
             <div style={{textAlign: 'center'}} className="gamedynamic">
 
-            <div className="input-field" style={{color: 'white'}}>
-            <label htmlFor="game">Game</label>
-            <input type ="text" id="game" onChange={this.handleChnge}></input>
+            <div className="input-field" style={{paddingLeft:'99px', paddingRight: '99px'}}>
+            {/* <label htmlFor="game" style={{textAlign: 'center'}}>Game</label> */}
+            <h3 style={{textAlign: 'center',color: 'white'}}>Game</h3>
+            <input type ="text" id="game" onChange={this.handleChnge} style={{color: 'white'}}></input>
             </div>
 
 
@@ -105,10 +106,12 @@ class Gamedynamic extends Component {
                     
                     return (
                         <div style={{textAlign: 'center'}}>
-                        {game.title.replace(" system requirements","") == this.state.game ? 
+
+                        {game.title.replace(" system requirements","")[0] == this.state.game[0] ? 
                     <button style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title)}>{game.title.replace(" system requirements","")}</button>
                    
-                     : null   } </div>
+                     : null   } 
+                     </div>
                     )
                 })}
             </div>

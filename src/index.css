@@ -56,3 +56,8 @@ form button, form h5 {
   
   font-family: 'ZCOOL QingKe HuangYou' ;
 }
+
+.gamedynamic input-field {
+  text-align: center;
+  width: 60%
+}
