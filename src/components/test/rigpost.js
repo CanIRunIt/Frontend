@@ -2,6 +2,7 @@ import React,{ Component } from 'react';
 import axios from 'axios';
 import Rigscore from '../rigscore/rigscore';
 import Select from 'react-select';
+import GamerigScore from '../gamerigscore/gamerigscore';
 
 
 const gpus = [
@@ -1183,9 +1184,9 @@ class Rigpost extends Component {
         cpu: '',
         gpu: '',
         ram: '',
-        cpuscore: '',
-        gpuscore: '',
-        ramscore: '',
+        cpuscore: 60,
+        gpuscore: 80,
+        ramscore: 68,
     selectedOption: null,
     selectedOptioncpu: null,
 
@@ -1292,6 +1293,10 @@ class Rigpost extends Component {
             <label htmlFor="gpu">GPU</label>
             <input type ="text" id="gpu" onChange={this.handleChnge}></input>
             </div> */}
+
+            <GamerigScore ramscore={this.state.ramscore}
+                          cpuscore={this.state.cpuscore}
+                          gpuscore={this.state.gpuscore}></GamerigScore>
 
         <p style={{paddingTop: '3px'}}>CPU</p>
 <Select

@@ -20,4 +20,4 @@ class GamerigScore extends Component {
 
 }
 
-export default gamerigscore;
+export default GamerigScore;
