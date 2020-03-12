@@ -1179,6 +1179,7 @@ const rams = [
 
 class Rigpost extends Component {
     state = {
+        game: '',
         cpu: '',
         gpu: '',
         ram: '',
@@ -1194,6 +1195,16 @@ class Rigpost extends Component {
 
     componentDidMount () {
         console.log(this.props)
+        const query = new URLSearchParams(this.props.location.search);
+        const game = ''
+        /* for(let param of query.entries()){
+            game = param[1]
+        }
+        this.setState({game: game})
+        console.log(this.state.game) */
+        console.log(this.props.location.search.replace('?',''))
+        this.setState({game: this.props.location.search.replace('?','')})
+        console.log(query)
     }
 
 
@@ -1208,19 +1219,19 @@ class Rigpost extends Component {
     handleChangeram = selectedOptionram => {
         this.setState({ selectedOptionram });
         console.log(`Option selected:`, selectedOptionram);
-        
+        this.setState({ram: selectedOptionram.value})
       };
 
     handleChangegpu = selectedOption => {
         this.setState({ selectedOption });
         console.log(`Option selected:`, selectedOption);
-        
+        this.setState({gpu: selectedOption.value})
       };
 
       handleChangecpu = selectedOptioncpu => {
         this.setState({ selectedOptioncpu });
         console.log(`Option selected:`, selectedOptioncpu);
-        
+        this.setState({cpu: selectedOptioncpu.value})
       };
 
     handlePost = (e) => {
@@ -1267,6 +1278,7 @@ class Rigpost extends Component {
         return (
        
        <div className="container">
+       <h1 className="gametitle" style={{textAlign: 'center', marginTop: '3px'}}>{this.state.game.replace('requirements', 'requirements check')}</h1>
             <form onSubmit={this.handlePost} className="white">
             <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Can I run it</h5>
             
