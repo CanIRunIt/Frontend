@@ -1192,6 +1192,10 @@ class Rigpost extends Component {
 
     }
 
+    componentDidMount () {
+        console.log(this.props)
+    }
+
 
     handleChnge = (e) => {
         this.setState({

@@ -86,12 +86,20 @@ class Gamedynamic extends Component {
 
     }
 
-    gamepickHandler  (gametitle) {
-        console.log("hey")/* 
+    gamepickHandler = (gametitle) => {
+        console.log("hey")
         console.log(gametitle);
- */
+
         this.setState({game: gametitle})
         console.log(this.state.game)
+
+        const game = gametitle
+        this.props.history.push({
+            pathname: '/rigpost',
+            search: '?' + game
+        })
+
+
     }
 
     render () {
