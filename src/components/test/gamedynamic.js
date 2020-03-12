@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Gamerigscore from '../gamerigscore/gamerigscore';
 
 
 const gamesjson = [
@@ -79,15 +80,18 @@ class Gamedynamic extends Component {
 
     handleChnge = (e) => {
         this.setState({
-            [e.target.id]: e.target.value
+            [e.target.id]: e.target.value.toUpperCase()
 
         })
 
     }
 
     gamepickHandler  (gametitle) {
-        console.log("hey")
+        console.log("hey")/* 
         console.log(gametitle);
+ */
+        this.setState({game: gametitle})
+        console.log(this.state.game)
     }
 
     render () {
@@ -114,6 +118,19 @@ class Gamedynamic extends Component {
                      </div>
                     )
                 })}
+
+            {this.state.game != '' && this.state.game.length > 6 ? 
+            <div><h1 style={{color: 'white'}}>{this.state.game}</h1>
+            
+            <Gamerigscore cpuscore="60"
+                          gpuscore="80"
+                          ramscore="90" />
+
+            </div>
+             : null }
+
+
+
             </div>
            
         )
