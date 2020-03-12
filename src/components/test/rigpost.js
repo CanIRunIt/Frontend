@@ -1280,6 +1280,10 @@ class Rigpost extends Component {
        
        <div className="container">
        <h1 className="gametitle" style={{textAlign: 'center', marginTop: '3px'}}>{this.state.game.replace('requirements', 'requirements check')}</h1>
+       <GamerigScore ramscore={this.state.ramscore}
+                          cpuscore={this.state.cpuscore}
+                          gpuscore={this.state.gpuscore}></GamerigScore>
+
             <form onSubmit={this.handlePost} className="white">
             <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Can I run it</h5>
             
@@ -1294,10 +1298,7 @@ class Rigpost extends Component {
             <input type ="text" id="gpu" onChange={this.handleChnge}></input>
             </div> */}
 
-            <GamerigScore ramscore={this.state.ramscore}
-                          cpuscore={this.state.cpuscore}
-                          gpuscore={this.state.gpuscore}></GamerigScore>
-
+            
         <p style={{paddingTop: '3px'}}>CPU</p>
 <Select
         value={selectedOptioncpu}
@@ -1355,7 +1356,7 @@ class Rigpost extends Component {
                 <h3>RAM : {this.state.ram}</h3>
             </div>
         */}     
-        
+        <h1 style={{fontFamily: 'Rancho', fontSize: '146px', textAlign: 'center', color: 'white'}}>It will run</h1>
         
 
         </div>
