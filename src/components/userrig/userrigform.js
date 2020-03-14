@@ -1205,6 +1205,13 @@ class UserrigPost extends Component {
         console.log(query)
     }
 
+    donerigHandler = (event) => {
+        event.preventDefault()
+        console.log(this.state.cpu)
+        console.log(this.state.gpu)
+        console.log(this.state.ram)
+    }
+
 
     handleChnge = (e) => {
         this.setState({
@@ -1278,7 +1285,7 @@ class UserrigPost extends Component {
        <div className="container">
       
            <form onSubmit={this.handlePost} className="white">
-            <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Can I run it</h5>
+            <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Create my Rig</h5>
             
           
         {/*    <div className="input-field">

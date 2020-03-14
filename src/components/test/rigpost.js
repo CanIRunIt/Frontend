@@ -1184,9 +1184,9 @@ class Rigpost extends Component {
         cpu: '',
         gpu: '',
         ram: '',
-        cpuscore: 60,
-        gpuscore: 80,
-        ramscore: 68,
+        cpuscore: '',
+        gpuscore: '',
+        ramscore: '',
     selectedOption: null,
     selectedOptioncpu: null,
 
@@ -1221,6 +1221,7 @@ class Rigpost extends Component {
         this.setState({ selectedOptionram });
         console.log(`Option selected:`, selectedOptionram);
         this.setState({ram: selectedOptionram.value})
+
       };
 
     handleChangegpu = selectedOption => {
@@ -1233,11 +1234,41 @@ class Rigpost extends Component {
         this.setState({ selectedOptioncpu });
         console.log(`Option selected:`, selectedOptioncpu);
         this.setState({cpu: selectedOptioncpu.value})
+        
+       
       };
 
     handlePost = (e) => {
         e.preventDefault();
         console.log(this.state)
+
+        console.log(this.state.cpu) 
+
+        /*        axios.get('http://localhost:3000/cpuscores/'+ this.state.cpu) */
+       
+       axios.get('https://warm-island-31012.herokuapp.com/cpuscores/'+ this.state.cpu)        
+        .then(response => {
+            console.log(response)
+            this.setState({
+                cpuscore: response.data.score
+            })
+        })
+
+/*         axios.get('http://localhost:3000/gpuscores/'+ this.state.gpu) */
+        axios.get('https://warm-island-31012.herokuapp.com/gpuscores/'+ this.state.gpu)
+        .then(response => {
+            console.log(response)
+            this.setState({
+                gpuscore: response.data.score
+            })
+            console.log("gpuscore:" + this.state.gpuscore)
+        })
+
+        if(this.state.gpuscore){
+            console.log(this.state.cpuscore)            
+            console.log(this.state.gpuscore)
+        }
+
 
     /*     const rig = {
          cpu : this.state.cpu,
@@ -1259,13 +1290,13 @@ class Rigpost extends Component {
      */
     }
 
-    rigscoreHandler = () => {
+    /* rigscoreHandler = () => {
         this.setState({
             cpuscore: 80,
             gpuscore: 60,
             ramscore: 80
         })
-    }
+    } */
 
 
     render () {
@@ -1280,9 +1311,10 @@ class Rigpost extends Component {
        
        <div className="container">
        <h1 className="gametitle" style={{textAlign: 'center', marginTop: '3px'}}>{this.state.game.replace('requirements', 'requirements check')}</h1>
+       {this.state.gpuscore ?
        <GamerigScore ramscore={this.state.ramscore}
-                          cpuscore={this.state.cpuscore}
-                          gpuscore={this.state.gpuscore}></GamerigScore>
+                          cpuscore={this.state.cpuscore / 14.13}
+                          gpuscore={this.state.gpuscore / 95.55}></GamerigScore> : null }
 
             <form onSubmit={this.handlePost} className="white">
             <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Can I run it</h5>
@@ -1331,7 +1363,7 @@ class Rigpost extends Component {
 
          
             <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-1" onClick={() => this.rigscoreHandler()}>Run Test</button>
+            <button className="btn pink lighten-1 z-depth-1" /* onClick={() => this.rigscoreHandler()} */>Run Test</button>
                 </div>
 
                 
