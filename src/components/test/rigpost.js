@@ -1187,6 +1187,16 @@ class Rigpost extends Component {
         cpuscore: '',
         gpuscore: '',
         ramscore: '',
+
+        gamecpu: '',
+        gamegpu: '',
+        gameram: '',
+
+        gamecpuscore: '',
+        gamegpuscore: '',
+        gameramscore: '',
+
+
     selectedOption: null,
     selectedOptioncpu: null,
 
@@ -1195,18 +1205,34 @@ class Rigpost extends Component {
     }
 
     componentDidMount () {
+
+        console.log('Mounted')
+
+        var gpu = 'NVIDIA GeForce GTX 960'        
+        
+        gpu.replace("NVIDIA ", "")
+        console.log(gpu)
+        
+        axios.get('https://warm-island-31012.herokuapp.com/gpuscores/' + gpu)
+        .then(response => {
+            console.log(response.data)
+        })
+
+/* 
         console.log(this.props)
         const query = new URLSearchParams(this.props.location.search);
-        const game = ''
-        /* for(let param of query.entries()){
-            game = param[1]
-        }
-        this.setState({game: game})
-        console.log(this.state.game) */
         console.log(this.props.location.search.replace('?',''))
         this.setState({game: this.props.location.search.replace('?','')})
-        console.log(query)
-    }
+
+        axios.get('/' + this.props.location.search.replace('?',''))
+        .then(response => {
+            this.setState({
+                gamecpu: response.data.processor,
+                gamegpu: response.data.Graphics,
+                gameram: response.data.Memory
+            })
+        }) */
+ }
 
 
     handleChnge = (e) => {
@@ -1319,11 +1345,13 @@ class Rigpost extends Component {
        
        <div className="container">
        <h1 className="gametitle" style={{textAlign: 'center', marginTop: '3px'}}>{this.state.game.replace('requirements', 'requirements check')}</h1>
-       {this.state.gpuscore ?
+       
+       
+       {this.state.gamegpuscore ?
        <GamerigScore ramscore={this.state.ramscore}
-                          cpuscore={this.state.cpuscore / 14.13}
-                          gpuscore={this.state.gpuscore / 95.55}
-                          ramscore={this.state.ramscore / 0.16}></GamerigScore> : null }
+                          cpuscore={this.state.gamecpuscore / 14.13}
+                          gpuscore={this.state.gamegpuscore / 95.55}
+                          ramscore={this.state.gameramscore / 0.16}></GamerigScore> : null }
 
             <form onSubmit={this.handlePost} className="white">
             <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Can I run it</h5>

@@ -1,8 +1,8 @@
 import React,{ Component } from 'react';
-import axios from 'axios';
 import Rigscore from '../rigscore/rigscore';
 import Select from 'react-select';
 import GamerigScore from '../gamerigscore/gamerigscore';
+import axios from '../../axios-userrig';
 
 
 
@@ -1178,12 +1178,25 @@ const rams = [
     {value: '16GB', label: '16GB'},
 ]
 
+const os = [
+    {value: 'Windows XP', label: 'Windows XP'},
+    {value: 'Windows Vista', label: 'Windows Vista'},
+    {value: 'Windows 7', label: 'Windows 7'},
+    {value: 'Windows 8', label: 'Windows 8'},
+    {value: 'Windows 10', label: 'Windows 10'}
+]
+
 class UserrigPost extends Component {
     state = {
+
+        user: '',
+
         cpu: '',
         gpu: '',
         ram: '',
         hd: '',
+        os: '',
+
         cpuscore: '',
         gpuscore: '',
         ramscore: '',
@@ -1191,25 +1204,31 @@ class UserrigPost extends Component {
 
     }
 
-    componentDidMount () {
-        console.log(this.props)
-        const query = new URLSearchParams(this.props.location.search);
-        const game = ''
-        /* for(let param of query.entries()){
-            game = param[1]
-        }
-        this.setState({game: game})
-        console.log(this.state.game) */
-        console.log(this.props.location.search.replace('?',''))
-        this.setState({game: this.props.location.search.replace('?','')})
-        console.log(query)
-    }
+    
 
     donerigHandler = (event) => {
         event.preventDefault()
         console.log(this.state.cpu)
         console.log(this.state.gpu)
         console.log(this.state.ram)
+        console.log(this.os)
+        console.log(this.hd)
+
+        const userrig = {
+            user: this.state.user,
+            RAM : this.state.ram,
+            CPU : this.state.cpu,
+            GPU : this.state.gpu,
+            HD  : this.state.hd,
+            OS  : this.state.os
+        }
+
+        axios.post('/userrigs.json', userrig )
+        .then(response => {
+            console.log(response)
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
 
@@ -1239,9 +1258,31 @@ class UserrigPost extends Component {
         this.setState({cpu: selectedOptioncpu.value})
       };
 
+      handleChangeOS = selectedOptionOS => {
+          this.setState({ selectedOptionOS });
+          console.log(`Option selected:`, selectedOptionOS);
+          this.setState({os: selectedOptionOS.value})          
+      };
+
     handlePost = (e) => {
         e.preventDefault();
         console.log(this.state)
+
+        const userrig = {
+            user: this.state.user,
+            RAM : this.state.ram,
+            CPU : this.state.cpu,
+            GPU : this.state.gpu,
+            HD  : this.state.hd + 'GB',
+            OS  : this.state.os
+        }
+
+        axios.post('/userrigs.json', userrig )
+        .then(response => {
+            console.log(response)
+        }).catch(err => {
+            console.log(err)
+        })
 
     /*     const rig = {
          cpu : this.state.cpu,
@@ -1277,6 +1318,7 @@ class UserrigPost extends Component {
     const { selectedOption } = this.state;
     const { selectedOptioncpu } = this.state;
     const { selectedOptionram } = this.state;
+    const { selectedOptionOS } = this.state;
 
 
 
@@ -1319,6 +1361,17 @@ class UserrigPost extends Component {
         value={selectedOptionram}
         onChange={this.handleChangeram}
         options={rams}
+        
+      />
+
+           <label htmlFor="cpu">Hard Disk Drive (GB)</label>
+            <input type ="text" id="hd" onChange={this.handleChnge}></input>
+
+      <p style={{paddingTop: '3px'}}>Operating System</p>
+      <Select
+        value={selectedOptionOS}
+        onChange={this.handleChangeOS}
+        options={os}
         
       />
 
