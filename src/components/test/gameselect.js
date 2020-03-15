@@ -2,20 +2,15 @@ import React from 'react';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import gamerigscore from '../gamerigscore/gamerigscore';
 
-const options = [
-  {value: 'The Eternal Castle Remastered', label: 'The Eternal Castle Remastered' },
-  {value:  'Bury Me, My Love', label: 'Bury Me, My Love' },
-  {value:  'New Super Mario Bros. U Deluxe', label: 'New Super Mario Bros. U Deluxe'},
-  {value:  'Mario & Luigi: Bowser\'s Inside Story', label: 'Mario & Luigi: Bowser\'s Inside Story'}
-];
- 
+
+var gamesjson = []
+
 class Gameselect extends React.Component {
   state = {
     selectedOption: null,
     ermessage : false,
-    games: null
+    games: false
     
   };
   handleChange = selectedOption => {
@@ -25,17 +20,18 @@ class Gameselect extends React.Component {
   };
 
   componentDidMount () {
-    axios.get('url')
+    axios.get('http://canirunit.herokuapp.com/results')
     .then(response => {
       console.log(response)
-      this.setState({games: response.data})
+      gamesjson = response.data
+      this.setState({ games: true })
     }).catch(error => {
       this.setState({ermessage: true})
     })
     
   }
 
-  componentDidUpdate () {
+/*   componentDidUpdate () {
     if(!this.state.selectedOption) {
     let game = this.state.selectedOption
     axios.post('url', game)
@@ -45,40 +41,32 @@ class Gameselect extends React.Component {
       this.setState({ermessage: true})
     })
     }
-  }
+  } */
 
 
 
-
-
+   
   render() {
-    const { selectedOption } = this.state;
- 
-    return (
-        
-        <div className="container" style={{textAlign: 'center'}}>
-        <h1>Game to run test on: {this.state.Game}</h1>
-        <div className="gamesel">
-        <h5 className="yellow-text text-darken-3" style={{ textAlign: 'center' }}>Game Select</h5>
-        
-      <button className="btn waves-effect waves-light btn" name="action" color="yellow"><Link to='/runtest' style={{textDecoration: 'none', color: 'white'}}>next</Link>
-      <Link to='/runtest' style={{textDecoration: 'none', color: 'white'}}><i className="material-icons right">send</i></Link>
-  </button>    
-      <Select
-        value={selectedOption}
-        onChange={this.handleChange}
-        options={options}
-        
-      />
+    let games = null;
+    if(this.state.games){
+   
+   
+   games = gamesjson.map(game => {
+    return <h3>{game.title}</h3>
+    
+  })
+}
 
-      </div>
-      
-      {/* <Gamerigscore
-      cpuscore = */}
+  return ( <div>
+    <h1>games</h1>
+    <div>
+    {games}
+    </div>
+    </div>
+  )
 
-      </div>
-    );
   }
+
 }
 
 export default Gameselect;
