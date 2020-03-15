@@ -1221,7 +1221,6 @@ class Rigpost extends Component {
         this.setState({ selectedOptionram });
         console.log(`Option selected:`, selectedOptionram);
         this.setState({ram: selectedOptionram.value})
-
       };
 
     handleChangegpu = selectedOption => {
@@ -1261,12 +1260,21 @@ class Rigpost extends Component {
             this.setState({
                 gpuscore: response.data.score
             })
-            console.log("gpuscore:" + this.state.gpuscore)
         })
+
+
+        axios.get('https://warm-island-31012.herokuapp.com/ramscores/' + this.state.ram)
+        .then(response => {
+            this.setState({
+                ramscore: response.data.score
+            })
+        })
+
 
         if(this.state.gpuscore){
             console.log(this.state.cpuscore)            
             console.log(this.state.gpuscore)
+            console.log(this.state.ramscore)
         }
 
 
@@ -1314,7 +1322,8 @@ class Rigpost extends Component {
        {this.state.gpuscore ?
        <GamerigScore ramscore={this.state.ramscore}
                           cpuscore={this.state.cpuscore / 14.13}
-                          gpuscore={this.state.gpuscore / 95.55}></GamerigScore> : null }
+                          gpuscore={this.state.gpuscore / 95.55}
+                          ramscore={this.state.ramscore / 0.16}></GamerigScore> : null }
 
             <form onSubmit={this.handlePost} className="white">
             <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Can I run it</h5>
@@ -1374,9 +1383,9 @@ class Rigpost extends Component {
         
             {this.state.cpuscore ?
                 <Rigscore 
-                cpuscore = {this.state.cpuscore}
-                gpuscore = {this.state.gpuscore}
-                ramscore = {this.state.ramscore}
+                ramscore={this.state.ramscore / 0.16}
+                cpuscore={this.state.cpuscore / 14.13}
+                gpuscore={this.state.gpuscore / 95.55}
                 /> : null }
 
         
