@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import fire from '../../config/fire';
 
-class Signin extends Component{
+class Signup extends Component{
 
     state = {
         mail: '',
@@ -54,4 +54,4 @@ class Signin extends Component{
     }
 }
 
-export default Signin;
+export default Signup;
