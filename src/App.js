@@ -11,6 +11,7 @@ import Post from './components/test/gamepost';
 import Rigpost from './components/test/rigpost';
 import Gamedynamic from './components/test/gamedynamic';
 import UserrigPost from './components/userrig/userrigform';
+import Signin from './components/user/signin';
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
      <Route path='/rigpost' component={Rigpost}></Route>
      <Route path='/gamedynamic' component={Gamedynamic}></Route>
      <Route path='/userrigpost' component={UserrigPost}></Route>
+     <Route path='/signin' component={Signin}></Route>
+     
     
      {/* <Route  {() =>{( <h1 style={{color:'white', textAlign: 'center'}}>404</h1>)}}></Route>
  */}

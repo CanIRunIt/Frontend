@@ -52,13 +52,13 @@ class Gameselect extends React.Component {
    
    
    games = gamesjson.map(game => {
-    return <h3>{game.title}</h3>
+    return <h3 style={{color: 'white', textAlign: 'center'}}>{game.title.replace(' system requirements','')}</h3>
     
   })
 }
 
   return ( <div>
-    <h1>games</h1>
+    <h1 style={{color: 'white', textAlign: 'center'}}>games</h1>
     <div>
     {games}
     </div>
