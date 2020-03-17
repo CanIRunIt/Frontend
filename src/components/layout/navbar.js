@@ -11,6 +11,7 @@ const Navbar = (props) => {
         <nav className="nav-wrapper grey darken-3 hcolor">
         <div className="container">
         <ResponsiveDrawer></ResponsiveDrawer>
+        <div className="Menu">
         <Link to='/' className="brand-logo left" style={{textDecoration: 'none'}}>
         Can I Run it
         </Link>
@@ -18,6 +19,7 @@ const Navbar = (props) => {
         <Signedinlinks ></Signedinlinks> :
         /* <Signedinlinks1></Signedinlinks1> :
         */ <Signedoutlinks ></Signedoutlinks> }
+        </div>
       
         </div>
         </nav>

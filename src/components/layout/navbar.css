@@ -1,0 +1,10 @@
+.Menu {
+    display: flex;
+
+}
+
+@media only screen and (max-width: 599px) {
+    .Menu {
+        display: none;
+    }
+}
