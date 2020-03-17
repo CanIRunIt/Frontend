@@ -5,6 +5,7 @@ import fire from '../../config/fire';
 const Signedinlinks = () => {
     return (
        <ul className="right">
+       <li><NavLink style={{textDecoration: 'none'}} to='/userrigpost'>create rig</NavLink></li>
        <li><NavLink style={{textDecoration: 'none'}} to='/myrig'>My Rig</NavLink></li>
        {/* <li><NavLink style={{textDecoration: 'none'}} to='/'>Log out</NavLink></li> 
         */}

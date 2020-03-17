@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import Signedinlinks from './signedinlinks'
 import Signedoutlinks from './signedoutlinks.js';
 import Signedinlinks1 from './signedinlinks1';
+import ResponsiveDrawer from './toolbox';
 
 const Navbar = (props) => {
     return (
+        <div>
         <nav className="nav-wrapper grey darken-3 hcolor">
         <div className="container">
+        <ResponsiveDrawer></ResponsiveDrawer>
         <Link to='/' className="brand-logo left" style={{textDecoration: 'none'}}>
         Can I Run it
         </Link>
@@ -18,6 +21,7 @@ const Navbar = (props) => {
       
         </div>
         </nav>
+        </div>
 
     )
 }

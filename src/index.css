@@ -67,3 +67,13 @@ form button, form h5 {
   font-family: 'ZCOOL QingKe HuangYou' ;
   color: white
 }
+
+.Toolbox {
+  background: linear-gradient(to right, #000000, #0f9b0f);
+}
+
+@media only screen and (min-width: 600px) {
+  .Toolbox {
+      display: none
+  }
+}
