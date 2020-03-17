@@ -2,16 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Signedinlinks from './signedinlinks'
 import Signedoutlinks from './signedoutlinks.js';
+import Signedinlinks1 from './signedinlinks1';
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         <nav className="nav-wrapper grey darken-3 hcolor">
         <div className="container">
-        <Link to='/' className="brand-logo left">
+        <Link to='/' className="brand-logo left" style={{textDecoration: 'none'}}>
         Can I Run it
         </Link>
-        <Signedinlinks></Signedinlinks>
- <Signedoutlinks></Signedoutlinks>
+        {props.user ?
+        <Signedinlinks ></Signedinlinks> :
+        /* <Signedinlinks1></Signedinlinks1> :
+        */ <Signedoutlinks ></Signedoutlinks> }
       
         </div>
         </nav>

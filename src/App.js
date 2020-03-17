@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ Component } from 'react';
 import './App.css';
 import Navbar from './components/layout/navbar';
 import { BrowserRouter,Switch,Route } from 'react-router-dom';
@@ -13,12 +13,45 @@ import Gamedynamic from './components/test/gamedynamic';
 import UserrigPost from './components/userrig/userrigform';
 import Signin from './components/user/signin';
 import Signup from './components/user/signup';
+import fire from './config/fire';
 
-function App() {
+
+class App extends Component {
+
+  constructor(){
+  super();
+
+  this.state = ({
+    user: null
+  })
+
+  this.authListner = this.authListner.bind(this);
+}
+
+  componentDidMount() {
+    this.authListner();
+  }
+
+  authListner() {
+    fire.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      if(user){
+        this.setState({user: user});
+        localStorage.setItem('user', user.uid);
+      }else{
+        this.setState({user: null});
+        localStorage.removeItem('user');
+      }
+    })
+  }
+
+
+  render() {
   return (
+    <div>
     <BrowserRouter>
     <div className="App">
-     <Navbar className="hcolor"></Navbar>
+     <Navbar className="hcolor" user={this.state.user}></Navbar>
      <Switch>
      <Route exact path='/' component={Home}></Route>
      <Route path='/runtest' component={Rigform}></Route>
@@ -38,7 +71,10 @@ function App() {
      </Switch>
     </div>
     </BrowserRouter>
+    </div>
   );
+}
+
 }
 
 export default App;

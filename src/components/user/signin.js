@@ -3,10 +3,16 @@ import fire from '../../config/fire';
 
 class Signin extends Component{
 
-    state = {
+    constructor(props) {
+        super(props);
+    
+    this.signin = this.signin.bind(this);
+
+    this.state = {
         mail: '',
         password: ''
     }
+}
 
     handleChnge = (e) => {
         this.setState({
@@ -19,18 +25,19 @@ class Signin extends Component{
     formcreateHandler () {
         console.log(this.state.mail)
         console.log(this.state.password)
-
-        fire.auth().signInWithEmailAndPassword(this.state.mail, this.state.password)
-        .then(response => {
-            console.log(response)
-        }).catch(err => {
-            console.log(err)
-        })
+        
     }
 
-    handlePost (event) {
-        event.preventDefault();
 
+    signin(event) {
+        event.preventDefault();
+        fire.auth().signInWithEmailAndPassword(this.state.mail, this.state.password).then((u)=>{
+        }).then(response => {
+            console.log(response)
+        })
+        .catch((error) => {
+            console.log(error);
+          })
     }
 
 
@@ -38,14 +45,14 @@ class Signin extends Component{
         return(
             <div>
             
-            <form onSubmit={this.handlePost} className="white">
+            <form className="white">
           
             <label htmlFor="mail">e-mail</label>
             <input type ="text" id="mail" onChange={this.handleChnge}></input>
            
              <label htmlFor="password">password</label>
              <input type ="text" id="password" onChange={this.handleChnge}></input>
-             <button onClick={() => {this.formcreateHandler()}}>Sign In</button>
+             <button type="submit" onClick={this.signin}>Sign In</button>
              </form>
 
              </div>
