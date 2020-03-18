@@ -43,10 +43,10 @@ class Signin extends Component{
 
     render() {
         return(
-            <div>
+            <div className="container" style={{marginTop: '9%'}}>
             
-            <form className="white">
-          
+            <form className="white container">
+          <h5 style={{marginBottom: '3px', textAlign: 'center'}}>Sign In</h5>
             <label htmlFor="mail">e-mail</label>
             <input type ="text" id="mail" onChange={this.handleChnge}></input>
            

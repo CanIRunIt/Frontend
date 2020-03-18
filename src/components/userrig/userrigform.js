@@ -1326,7 +1326,7 @@ class UserrigPost extends Component {
        
        <div className="container">
       
-           <form onSubmit={this.handlePost} className="white">
+           <form onSubmit={this.handlePost} className="white container">
             <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Create my Rig</h5>
             
           

@@ -55,6 +55,7 @@ class Signup extends Component{
             
             <form className="white">
           
+            <h5 style={{marginBottom: '3px', textAlign: 'center'}}>Sign Up</h5>
             <label htmlFor="mail">e-mail</label>
             <input type ="text" id="mail" onChange={this.handleChnge}></input>
            
