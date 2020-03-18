@@ -10,7 +10,7 @@ const Navbar = (props) => {
         <div>
         <nav className="nav-wrapper grey darken-3 hcolor">
         <div className="container">
-        <ResponsiveDrawer></ResponsiveDrawer>
+        <ResponsiveDrawer user={props.user}></ResponsiveDrawer>
         <div className="Menu">
         <Link to='/' className="brand-logo left" style={{textDecoration: 'none'}}>
         Can I Run it

@@ -63,20 +63,71 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
+    
+
+  let items = (
+    <div>
+      <List>
+        <ListItem ><Link to='/signin' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-In</Link></ListItem>
+        <ListItem ><Link to='/signup' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-Up</Link></ListItem>:
+    </List>
+    </div>
+  )
+  if(props.user) {
+    items = (
+      <div>
+         <List>
+    <ListItem ><Link to='/userrigpost' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Create Rig</Link></ListItem>
+        <ListItem ><Link to='/myrig' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>My Rig</Link></ListItem>
+        <ListItem ><Link to='/userprofile' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>My Profile</Link></ListItem>
+        <ListItem ><Link to='/' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-Out</Link></ListItem>
+      </List>
+    </div>
+    )
+  }
+
+  /* const signinlinks = (
+    <div>
+    <List>
+    <ListItem ><Link to='/userrigpost' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Create Rig</Link></ListItem>
+        <ListItem ><Link to='/myrig' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>My Rig</Link></ListItem>
+        <ListItem ><Link to='/userprofile' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>My Profile</Link></ListItem>
+        <ListItem ><Link to='/' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-Out</Link></ListItem>}
+      </List>
+      </div>
+  )
+
+  const signoutlinks = (
+    <div>
+    <List>
+        <ListItem ><Link to='/signin' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-In</Link></ListItem>
+        <ListItem ><Link to='/signup' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-Up</Link></ListItem>:
+    </List>
+    </div>
+  )
+ */
   const drawer = (
     <div>
       <div className={classes.toolbar} />
       <Divider />
-      <List>
+      {/* <List> */}
        {/*  {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))} */}
-        <ListItem ><Link to='/signin' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-In</Link></ListItem>
-        <ListItem ><Link to='/signup' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-Up</Link></ListItem>
-      </List>
+{/*         <ListItem ><Link to='/signin' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-In</Link></ListItem>
+        <ListItem ><Link to='/signup' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-Up</Link></ListItem>:
+        <ListItem ><Link to='/userrigpost' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Create Rig</Link></ListItem>
+        <ListItem ><Link to='/myrig' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>My Rig</Link></ListItem>
+        <ListItem ><Link to='/userprofile' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>My Profile</Link></ListItem>
+        <ListItem ><Link to='/' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-Out</Link></ListItem>
+      */}
+{/*       {props.user ? {signinlinks} : {signoutlinks}}
+ */}
+    {items}     
+     {/*  </List> */}
      {/*  <Divider />
       <List>
         {['All mail', 'Trash', 'Spam'].map((text, index) => (
@@ -104,7 +155,7 @@ function ResponsiveDrawer(props) {
             <MenuIcon />
           </IconButton>
           <Typography  style={{  fontFamily: 'ZCOOL QingKe HuangYou' }} variant="h6" noWrap>
-            Can I Run it
+          <Link to='/'>Can I Run it</Link>
           </Typography>
         </Toolbar>
       </AppBar>
