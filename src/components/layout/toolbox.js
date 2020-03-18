@@ -18,6 +18,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import clsses from './toolbox.css';
 import { Link } from 'react-router-dom';
+import fire from '../../config/fire';
 
 const drawerWidth = 240;
 
@@ -63,6 +64,11 @@ function ResponsiveDrawer(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  const signout = () => {
+    fire.auth().signOut()
+    handleDrawerToggle()
+  }
+
     
 
   let items = (
@@ -80,7 +86,7 @@ function ResponsiveDrawer(props) {
     <ListItem ><Link to='/userrigpost' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Create Rig</Link></ListItem>
         <ListItem ><Link to='/myrig' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>My Rig</Link></ListItem>
         <ListItem ><Link to='/userprofile' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>My Profile</Link></ListItem>
-        <ListItem ><Link to='/' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-Out</Link></ListItem>
+        <ListItem ><Link to='/' style={{textDecoration: 'none', color: 'green'}} onClick={() => signout()}>Sign-Out</Link></ListItem>
       </List>
     </div>
     )
