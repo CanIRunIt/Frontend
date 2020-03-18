@@ -14,8 +14,8 @@ import UserrigPost from './components/userrig/userrigform';
 import Signin from './components/user/signin';
 import Signup from './components/user/signup';
 import fire from './config/fire';
-
-
+import axios from './axios-userrig'
+;
 class App extends Component {
 
   constructor(){
@@ -30,6 +30,12 @@ class App extends Component {
 
   componentDidMount() {
     this.authListner();
+    axios.get('/userrigs.json')
+    .then(response => {
+      console.log(response)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   authListner() {

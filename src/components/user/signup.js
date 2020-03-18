@@ -51,7 +51,7 @@ class Signup extends Component{
 
     render() {
         return(
-            <div>
+            <div className="container" style={{marginTop: '9%'}}>
             
             <form className="white">
           
