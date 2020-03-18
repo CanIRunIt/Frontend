@@ -66,7 +66,7 @@ function ResponsiveDrawer(props) {
     
 
   let items = (
-    <div>
+    <div style={{fontFamily: 'Akronim'}}>
       <List>
         <ListItem ><Link to='/signin' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-In</Link></ListItem>
         <ListItem ><Link to='/signup' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-Up</Link></ListItem>:
@@ -75,7 +75,7 @@ function ResponsiveDrawer(props) {
   )
   if(props.user) {
     items = (
-      <div>
+      <div style={{fontFamily: 'Akronim'}}>
          <List>
     <ListItem ><Link to='/userrigpost' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Create Rig</Link></ListItem>
         <ListItem ><Link to='/myrig' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>My Rig</Link></ListItem>
@@ -141,7 +141,7 @@ function ResponsiveDrawer(props) {
   );
 
   return (
-    <div className="Toolbox" style={{  fontFamily: 'ZCOOL QingKe HuangYou' }}>
+    <div className="Toolbox" style={{  fontFamily: 'Akronim' }}>
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar style={{background: 'linear-gradient(to right, #000000, #0f9b0f)'}}>
@@ -154,8 +154,8 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography  style={{  fontFamily: 'ZCOOL QingKe HuangYou' }} variant="h6" noWrap>
-          <Link to='/'>Can I Run it</Link>
+          <Typography  style={{  fontFamily: 'Akronim' }} variant="h6" noWrap>
+          <Link to='/' style={{textDecoration: 'none'}}>Can I Run it</Link>
           </Typography>
         </Toolbar>
       </AppBar>
