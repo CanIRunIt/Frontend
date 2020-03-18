@@ -17,6 +17,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import clsses from './toolbox.css';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -73,8 +74,8 @@ function ResponsiveDrawer(props) {
             <ListItemText primary={text} />
           </ListItem>
         ))} */}
-        <ListItem button>Sign-In</ListItem>
-        <ListItem button>Sign-Up</ListItem>
+        <ListItem ><Link to='/signin' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-In</Link></ListItem>
+        <ListItem ><Link to='/signup' style={{textDecoration: 'none', color: 'green'}} onClick={() => handleDrawerToggle()}>Sign-Up</Link></ListItem>
       </List>
      {/*  <Divider />
       <List>
