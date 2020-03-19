@@ -14,8 +14,9 @@ import UserrigPost from './components/userrig/userrigform';
 import Signin from './components/user/signin';
 import Signup from './components/user/signup';
 import fire from './config/fire';
-import axios from './axios-userrig'
-;
+import axios from './axios-userrig';
+import Userrig from '../src/components/userrig/userrig';
+
 class App extends Component {
 
   constructor(){
@@ -69,6 +70,7 @@ class App extends Component {
      <Route path='/userrigpost' component={UserrigPost}></Route>
      <Route path='/signin' component={Signin}></Route>
      <Route path='/signup' component={Signup}></Route>
+     <Route path='/myrig' component={Userrig}></Route>
      
     
      {/* <Route  {() =>{( <h1 style={{color:'white', textAlign: 'center'}}>404</h1>)}}></Route>

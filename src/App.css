@@ -83,3 +83,11 @@ background: linear-gradient(to right, #000000, #0f9b0f);position: relative;
 .btn {
   background-color: crimson
 }
+
+.button {
+  background-color: crimson
+}
+
+.button :hover {
+  background-color: yellowgreen;
+}

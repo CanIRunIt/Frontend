@@ -61,7 +61,7 @@ class Signup extends Component{
            
              <label htmlFor="password">password</label>
              <input type ="text" id="password" onChange={this.handleChnge}></input>
-             <button type="submit" onClick={this.signup}>Sign Up</button>
+             <button className="pink lighten-1" type="submit" onClick={this.signup}>Sign Up</button>
              </form>
 
              </div>
