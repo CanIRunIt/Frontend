@@ -3,7 +3,7 @@ import Rigscore from '../rigscore/rigscore';
 import Select from 'react-select';
 import GamerigScore from '../gamerigscore/gamerigscore';
 import axios from '../../axios-userrig';
-
+import { connect } from 'react-redux';
 
 
 const gpus = [
@@ -1189,7 +1189,7 @@ const os = [
 class UserrigPost extends Component {
     state = {
 
-        user: '',
+        useremail: '',
 
         cpu: '',
         gpu: '',
@@ -1204,6 +1204,13 @@ class UserrigPost extends Component {
 
     }
 
+  /*   componentDidMount () {
+        this.setState({
+            useremail: this.props.useremail
+        })
+        console.log(this.state.useremail)
+    } */
+
     
 
     donerigHandler = (event) => {
@@ -1215,7 +1222,7 @@ class UserrigPost extends Component {
         console.log(this.hd)
 
         const userrig = {
-            user: this.state.user,
+            user: this.state.useremail,
             RAM : this.state.ram,
             CPU : this.state.cpu,
             GPU : this.state.gpu,
@@ -1268,8 +1275,9 @@ class UserrigPost extends Component {
         e.preventDefault();
         console.log(this.state)
 
-        const userrig = {
-            user: this.state.user,
+        const userrig = {/* 
+            user: this.state.useremail, */
+            creator: this.props.useremail,
             RAM : this.state.ram,
             CPU : this.state.cpu,
             GPU : this.state.gpu,
@@ -1384,7 +1392,7 @@ class UserrigPost extends Component {
 
          
             <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-1" onClick={() => this.rigscoreHandler()}>done</button>
+            <button type="submit" className="btn pink lighten-1 z-depth-1" onClick={() => this.rigscoreHandler()}>done</button>
                 </div>
 
                 
@@ -1401,4 +1409,10 @@ class UserrigPost extends Component {
    
 }
 
-export default UserrigPost
+const mapSToProps = state => {
+    return {
+        useremail: state.useremail
+    }
+}
+
+export default connect(mapSToProps)(UserrigPost);

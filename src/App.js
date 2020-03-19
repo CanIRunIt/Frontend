@@ -16,6 +16,8 @@ import Signup from './components/user/signup';
 import fire from './config/fire';
 import axios from './axios-userrig';
 import Userrig from '../src/components/userrig/userrig';
+import { userget } from './actions';
+import { connect } from 'react-redux';
 
 class App extends Component {
 
@@ -23,7 +25,7 @@ class App extends Component {
   super();
 
   this.state = ({
-    user: null
+    useremail: ''
   })
 
   this.authListner = this.authListner.bind(this);
@@ -41,16 +43,20 @@ class App extends Component {
 
   authListner() {
     fire.auth().onAuthStateChanged((user) => {
-      console.log(user);
+      console.log(user.email);
+      this.setState({useremail: user.email})
       if(user){
         this.setState({user: user});
         localStorage.setItem('user', user.uid);
+        this.props.onUserset()
       }else{
         this.setState({user: null});
         localStorage.removeItem('user');
       }
     })
   }
+
+  
 
 
   render() {
@@ -85,4 +91,10 @@ class App extends Component {
 
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+      onUserset: () => dispatch({type: 'USERSET', value: 'ceejay@yahoo.com'})
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);

@@ -9,6 +9,10 @@ class Userrig extends Component {
         }
     }
 
+    componentDidMount () {
+        this.props.onMount()
+    }
+
     render () {
         return (
             <div>
@@ -18,6 +22,7 @@ class Userrig extends Component {
                 <h3 style={{textAlign: 'center'}}>RAM : {this.props.rig.RAM}</h3>
                 <h3 style={{textAlign: 'center'}}>HD : {this.props.rig.HD}</h3>
                 <h3 style={{textAlign: 'center'}}>OS : {this.props.rig.OS}</h3>
+                <button onClick={this.props.onMount}>Click</button>
             </div>
         )
     }
@@ -26,7 +31,13 @@ class Userrig extends Component {
 const mapSToProps = state => {
     return {
         rig: state.userrig
-    }
-}
+    };
+};
 
-export default connect(mapSToProps)(Userrig);
+const mapDispatchToProps = dispatch => {
+    return {
+        onMount: () => dispatch({type: 'USERRIG'}),
+    };
+};
+
+export default connect(mapSToProps, mapDispatchToProps)(Userrig);
