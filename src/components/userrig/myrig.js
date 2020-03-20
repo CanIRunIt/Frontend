@@ -54,15 +54,17 @@ class Myrig extends Component {
 
         if(this.state.done) {
          rigs = this.state.userrigs.map(singlerig => {
-                return <Rig
+                if(singlerig.creator === "ceejay6@mail.com"){
+                return <Rig style={{marginTop: '8px'}}
                 cpu = {singlerig.CPU}
                 gpu = {singlerig.GPU}
                 ram = {singlerig.RAM}
                 hd = {singlerig.HD}
                 os = {singlerig.OS}
+                
                 >
                 </Rig>
-                    
+                }
                 
             })
         }
