@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import axios from '../../axios-userrig';
+import Rig from '../Rig/rig';
+import fire from '../../config/fire';
+
+//var userrigs = []
 
 class Myrig extends Component {
     
     state = {
         userrigs: [],
+        done: false,
         userrig: {
 
         },
@@ -12,35 +17,86 @@ class Myrig extends Component {
     }
 
     componentDidMount () {
-        axios.get('userrigs.json')
-        .then(response => {
-            this.setState({
-                userrigs: response.data
+        /* axios.get('userrigs.json') */
+        fire.database().ref('userrigs').once('value')
+        .then(data => {
+        const userrig = []
+        const obj = data.val()
+        /* for(let key in obj) {
+            userrig.push({
+                id: key,
+                user: obj[key].creator,
+                cpu: obj[key].CPU,
+                gpu: obj[key].GPU
             })
-        }).catch(err => {
-            console.log(err)
-        })
-        for(i = 0; i < this.state.userrigs.length(); i++){
-            if(userrigs[i].creator === "ceejay8@mail.com"){
-                this.setState({
-                    userrig: userrigs[i]
-                })
-            }
+        } */
+        if(obj) {
+            const rigslist = Object.keys(obj).map(key => ({
+                ...obj[key],
+                id: key
+            }));
+            this.setState({
+                userrigs: rigslist,
+                done: true
+            })
         }
+        
+        console.log('userrigs :' + userrig.cpu)
+    }).catch(err => {
+        console.log(err)
+    })
     }
+
     
     render () {
+        
+        let rigs = null;
+
+        if(this.state.done) {
+         rigs = this.state.userrigs.map(singlerig => {
+                return <Rig
+                cpu = {singlerig.CPU}
+                gpu = {singlerig.GPU}
+                ram = {singlerig.RAM}
+                hd = {singlerig.HD}
+                os = {singlerig.OS}
+                >
+                </Rig>
+                    
+                
+            })
+        }
+    
+
         return (
-            
+           /*  
             <div className="container">            
-            <h3>CPU : {this.state.userrig.CPU} </h3>
-            <h3>GPU : {this.state.userrig.GPU} </h3>
-            <h3>RAM : {this.state.userrig.RAM} </h3>
-            <h3>HD  : {this.state.userrig.HD} </h3>
-            <h3>OS  : {this.state.userrig.OS} </h3>  
-            </div>
-          
+           {this.state.userrigs ? 
+           
+           <Rig 
+           cpu = {this.state.userrig.CPU}
+           gpu = {this.state.userrig.GPU}
+           ram = {this.state.userrig.RAM}
+           hd = {this.state.userrig.HD}
+           os = {this.state.userrig.OS}
+           ></Rig>
+           
+        : null}
+             </div>
+           */
+          <div> 
+             {rigs} 
+             {/* <Rig 
+           cpu = "intel i9"
+           gpu = {this.state.userrig.GPU}
+           ram = {this.state.userrig.RAM}
+           hd = {this.state.userrig.HD}
+           os = {this.state.userrig.OS}
+           ></Rig>  */}
+          </div>
 
         )
     }
 }
+
+export default Myrig;
