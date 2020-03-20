@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 class Userrig extends Component {
     state = {
         userrig: {
-
-        }
+        },
+        cpu: 'Intel i9'
     }
 
-    componentDidMount () {
+   /*  componentDidMount () {
         this.props.onMount()
-    }
+    } */
 
     render () {
         return (
@@ -22,11 +22,12 @@ class Userrig extends Component {
                 <h3 style={{textAlign: 'center'}}>RAM : {this.props.rig.RAM}</h3>
                 <h3 style={{textAlign: 'center'}}>HD : {this.props.rig.HD}</h3>
                 <h3 style={{textAlign: 'center'}}>OS : {this.props.rig.OS}</h3>
-                <button onClick={this.props.onMount}>Click</button>
+                <button onClick={() => this.props.onMount(this.state.cpu)}>Click</button>
             </div>
         )
     }
 }
+
 
 const mapSToProps = state => {
     return {
@@ -36,7 +37,7 @@ const mapSToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onMount: () => dispatch({type: 'USERRIG'}),
+        onMount: (cpu) => dispatch({type: 'USERRIG', value: cpu}),
     };
 };
 

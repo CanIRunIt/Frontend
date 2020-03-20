@@ -48,10 +48,13 @@ class App extends Component {
       if(user){
         this.setState({user: user});
         localStorage.setItem('user', user.uid);
-        this.props.onUserset()
+        localStorage.setItem('useremail',this.state.useremail);/* 
+        this.props.onUserset(this.state.useremail) */
+        this.props.onUserset(user.email)
       }else{
         this.setState({user: null});
         localStorage.removeItem('user');
+        localStorage.removeItem('useremail');
       }
     })
   }
@@ -93,8 +96,15 @@ class App extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-      onUserset: () => dispatch({type: 'USERSET', value: 'ceejay@yahoo.com'})
+      onUserset: (mail) => dispatch({type: 'USERSET', value: mail})
   };
 };
+
+
+/* const mapDispatchToProps = dispatch => {
+  return {
+      onUserset: () => dispatch({type: 'USERSET', value: mail})
+  }
+} */
 
 export default connect(null, mapDispatchToProps)(App);

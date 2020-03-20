@@ -1,7 +1,7 @@
 
 
 const initrig = {
-    useremail: 'ceejay@gmail.com',
+    useremail: '',
     userrig : {
         CPU: 'Intel i3',
         GPU: 'R7 240',
@@ -18,7 +18,7 @@ const reducer = (state = initrig, action) => {
         return {
             ...state.userrig,
             userrig: {
-                CPU: 'Intel i9',
+                CPU: action.value,
                 GPU: 'Geforce gt610',
                 RAM: '8 GB',
                 HD: '256 GB',
@@ -29,6 +29,7 @@ const reducer = (state = initrig, action) => {
 
     if(action.type === 'USERRSET') {
         return {
+            ...state.useremail,
             useremail: action.value
         }
     }

@@ -1204,12 +1204,13 @@ class UserrigPost extends Component {
 
     }
 
-  /*   componentDidMount () {
+    componentDidMount () {
+        console.log(this.props.useremail)
         this.setState({
-            useremail: this.props.useremail
+            useremail: localStorage.getItem('useremail')
         })
         console.log(this.state.useremail)
-    } */
+    }
 
     
 
@@ -1222,7 +1223,7 @@ class UserrigPost extends Component {
         console.log(this.hd)
 
         const userrig = {
-            user: this.state.useremail,
+            user: localStorage.getItem('useremail'),
             RAM : this.state.ram,
             CPU : this.state.cpu,
             GPU : this.state.gpu,
@@ -1277,7 +1278,7 @@ class UserrigPost extends Component {
 
         const userrig = {/* 
             user: this.state.useremail, */
-            creator: this.props.useremail,
+            creator: localStorage.getItem('useremail'),
             RAM : this.state.ram,
             CPU : this.state.cpu,
             GPU : this.state.gpu,
@@ -1408,6 +1409,8 @@ class UserrigPost extends Component {
 
    
 }
+
+
 
 const mapSToProps = state => {
     return {
