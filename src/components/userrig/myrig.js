@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../axios-userrig';
 import Rig from '../Rig/rig';
 import fire from '../../config/fire';
+import MediaCard from '../Rig/rigcard';
 
 //var userrigs = []
 
@@ -53,7 +54,7 @@ class Myrig extends Component {
         let rigs = null;
 
         if(this.state.done) {
-         rigs = this.state.userrigs.map(singlerig => {
+         /* rigs = this.state.userrigs.map(singlerig => {
                 if(singlerig.creator === "ceejay6@mail.com"){
                 return <Rig style={{marginTop: '8px'}}
                 cpu = {singlerig.CPU}
@@ -66,6 +67,18 @@ class Myrig extends Component {
                 </Rig>
                 }
                 
+            }) */
+
+            rigs = this.state.userrigs.map(singlerig => {
+                if(singlerig.creator === "ceejay6@mail.com"){
+                    return <MediaCard 
+                    cpu = {singlerig.CPU}
+                gpu = {singlerig.GPU}
+                ram = {singlerig.RAM}
+                hd = {singlerig.HD}
+                os = {singlerig.OS}
+                ></MediaCard>
+                }
             })
         }
     

@@ -19,6 +19,7 @@ import Userrig from '../src/components/userrig/userrig';
 import { userget } from './actions';
 import { connect } from 'react-redux';
 import Myrig from './components/userrig/myrig';
+import MediaCard from '../src/components/Rig/rigcard';
 
 class App extends Component {
 
@@ -82,6 +83,7 @@ class App extends Component {
      <Route path='/signup' component={Signup}></Route>
      <Route path='/userrig' component={Userrig}></Route>
      <Route path='/myrig' component={Myrig}></Route>
+    <Route path='/rigcard' component={MediaCard}></Route>
      
     
      {/* <Route  {() =>{( <h1 style={{color:'white', textAlign: 'center'}}>404</h1>)}}></Route>

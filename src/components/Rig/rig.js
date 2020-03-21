@@ -6,7 +6,8 @@ const rig = (props) => (
             <h3>GPU : {props.gpu} </h3>
             <h3>RAM : {props.ram} </h3>
             <h3>HD  : {props.hd} </h3>
-            <h3>OS  : {props.os} </h3> 
+            <h3>OS  : {props.os} </h3>
+            
     </div>
 )
 
