@@ -33,6 +33,20 @@ const reducer = (state = initrig, action) => {
             useremail: action.value
         }
     }
+
+    if(action.type === 'MYRIGSET') {
+        return {
+            ...state.userrig,
+            userrig: {
+                /* CPU: action.value.cpu,
+                GPU: action.value.gpu,
+                RAM: action.value.ram, */
+                CPU: action.cpu,
+                GPU: action.gpu,
+                RAM: action.ram
+            }
+        }
+    }
     return state;
 };
 

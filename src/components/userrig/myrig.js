@@ -3,6 +3,9 @@ import axios from '../../axios-userrig';
 import Rig from '../Rig/rig';
 import fire from '../../config/fire';
 import MediaCard from '../Rig/rigcard';
+import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux'; 
+import Scorehandler from './scorehandler';
 
 //var userrigs = []
 
@@ -14,11 +17,20 @@ class Myrig extends Component {
         userrig: {
 
         },
-        useremail: ''
+        useremail: '',
+        cpuscore: '',
+        gpuscore: '',
+        ramscore: '',
+
+        done: false
     }
 
     componentDidMount () {
         /* axios.get('userrigs.json') */
+        
+        this.setState({
+            useremail: localStorage.getItem('useremail')
+        })
         fire.database().ref('userrigs').once('value')
         .then(data => {
         const userrig = []
@@ -48,6 +60,37 @@ class Myrig extends Component {
     })
     }
 
+   /*  Scoresfetch () {
+        axios.get('https://warm-island-31012.herokuapp.com/cpuscores/'+ this.state.cpu)        
+        .then(response => {
+            console.log(response)
+            this.setState({
+                cpuscore: response.data.score
+            })
+        })
+
+/*         axios.get('http://localhost:3000/gpuscores/'+ this.state.gpu) */
+       /*  axios.get('https://warm-island-31012.herokuapp.com/gpuscores/'+ this.state.gpu)
+        .then(response => {
+            console.log(response)
+            this.setState({
+                gpuscore: response.data.score
+            })
+        })
+
+
+        axios.get('https://warm-island-31012.herokuapp.com/ramscores/' + this.state.ram)
+        .then(response => {
+            this.setState({
+                ramscore: response.data.score
+            })
+        })
+    } */ 
+
+    clicked () {
+        this.setState({done: true})
+    }
+
     
     render () {
         
@@ -70,14 +113,26 @@ class Myrig extends Component {
             }) */
 
             rigs = this.state.userrigs.map(singlerig => {
-                if(singlerig.creator === "ceejay6@mail.com"){
-                    return <MediaCard 
+                if(singlerig.creator === this.state.useremail){
+                    return <div><MediaCard 
                     cpu = {singlerig.CPU}
                 gpu = {singlerig.GPU}
                 ram = {singlerig.RAM}
                 hd = {singlerig.HD}
                 os = {singlerig.OS}
                 ></MediaCard>
+               {/*  <Button onClick={() => this.props.onRigSet(singlerig.CPU,singlerig.GPU,singlerig.RAM)} variant="contained" color="primary">
+                Get Score
+                </Button>
+                <Button onClick={() => this.clicked()}>Scores</Button>
+                 */}
+                <Scorehandler
+                cpu = {singlerig.CPU}
+                gpu = {singlerig.GPU}
+                ram = {singlerig.RAM}></Scorehandler>
+               
+
+                </div>
                 }
             })
         }
@@ -99,8 +154,9 @@ class Myrig extends Component {
         : null}
              </div>
            */
-          <div> 
-             {rigs} 
+          <div style={{textAlign: 'center'}}> 
+             {rigs}
+             
              {/* <Rig 
            cpu = "intel i9"
            gpu = {this.state.userrig.GPU}
@@ -114,4 +170,11 @@ class Myrig extends Component {
     }
 }
 
-export default Myrig;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onRigSet: (cpu, gpu, ram) => dispatch({type:"MYRIGSET", /* value: {cpu: cpu,gpu: gpu,ram: ram} */ cpu:cpu, gpu:gpu, ram:ram})
+    }
+}
+
+export default connect(null,mapDispatchToProps)(Myrig);

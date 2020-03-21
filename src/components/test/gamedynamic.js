@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Gamerigscore from '../gamerigscore/gamerigscore';
+import { Button } from '@material-ui/core';
+import { purple } from '@material-ui/core/colors';
 
 
 const gamesjson = [
@@ -71,6 +73,7 @@ const gamesjson = [
     {title : "Free Company VR system requirements",OS : "Windows 7 SP1, Windows 8.1 or later, Windows 10",Processor : "Intel Core i5-4590/AMD FX 8350 equivalent or better",Memory : "4 GB RAM",Graphics : "NVIDIA GeForce GTX 1060, AMD Radeon RX 480 equivalent or better",Storage : "15 GB available space",},
     ]
 
+    const primary = purple[500];
 
 class Gamedynamic extends Component {
 
@@ -117,11 +120,11 @@ class Gamedynamic extends Component {
                 {gamesjson.map(game => {
                     
                     return (
-                        <div style={{textAlign: 'center'}}>
+                        <div style={{textAlign: 'center', marginTop: '3px'}}>
 
                         {game.title.replace(" system requirements","")[0] == this.state.game[0] ? 
-                    <button style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title)}>{game.title.replace(" system requirements","")}</button>
-                   
+                    <Button variant="contained" color="primary" style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title)}>{game.title.replace(" system requirements","")}</Button>
+                    
                      : null   } 
                      </div>
                     )

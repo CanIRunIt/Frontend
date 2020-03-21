@@ -3,11 +3,11 @@ import { ProgressBar } from 'react-bootstrap';
 
 const rigscore = (props) => (
 
-    <div className="container" style={{fontFamily: 'ZCOOL QingKe HuangYou', paddingTop: '19%', paddingBottom: '19%'}}>
+    <div className="container" style={{fontFamily: 'ZCOOL QingKe HuangYou', paddingTop: '19%', paddingBottom: '19%', color: 'white'}}>
     <h1 style={{textAlign: 'center'}}>Your Rig </h1>
-    CPU (kind)<ProgressBar variant="warning" animated now={props.cpuscore} />
-    GPU (kind)<ProgressBar animated now={props.gpuscore} />
-    RAM (kind)<ProgressBar variant="success" animated now={props.ramscore} />
+    CPU {props.cpu}<ProgressBar variant="warning" animated now={props.cpuscore} />
+    GPU {props.gpu}<ProgressBar animated now={props.gpuscore} />
+    RAM {props.ram}<ProgressBar variant="success" animated now={props.ramscore} />
     
     </div>
 

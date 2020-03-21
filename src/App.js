@@ -20,6 +20,7 @@ import { userget } from './actions';
 import { connect } from 'react-redux';
 import Myrig from './components/userrig/myrig';
 import MediaCard from '../src/components/Rig/rigcard';
+import Userrigscore from '../src/components/userrig/userrigscore';
 
 class App extends Component {
 
@@ -84,7 +85,8 @@ class App extends Component {
      <Route path='/userrig' component={Userrig}></Route>
      <Route path='/myrig' component={Myrig}></Route>
     <Route path='/rigcard' component={MediaCard}></Route>
-     
+    <Route path='/myrigscore' component={Userrigscore}></Route>
+    
     
      {/* <Route  {() =>{( <h1 style={{color:'white', textAlign: 'center'}}>404</h1>)}}></Route>
  */}
