@@ -21,6 +21,8 @@ import { connect } from 'react-redux';
 import Myrig from './components/userrig/myrig';
 import MediaCard from '../src/components/Rig/rigcard';
 import Userrigscore from '../src/components/userrig/userrigscore';
+import CircularIndeterminate from './components/ui/progress';
+import Gameswitch from './components/games/gameswitch';
 
 class App extends Component {
 
@@ -86,6 +88,8 @@ class App extends Component {
      <Route path='/myrig' component={Myrig}></Route>
     <Route path='/rigcard' component={MediaCard}></Route>
     <Route path='/myrigscore' component={Userrigscore}></Route>
+    <Route path='/progress' component={CircularIndeterminate}></Route>
+    <Route path='/gameswitch' component={Gameswitch}></Route>
     
     
      {/* <Route  {() =>{( <h1 style={{color:'white', textAlign: 'center'}}>404</h1>)}}></Route>

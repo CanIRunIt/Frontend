@@ -1425,7 +1425,6 @@ class Rigpost extends Component {
                 <h3>RAM : {this.state.ram}</h3>
             </div>
         */}     
-        <h1 style={{fontFamily: 'Rancho', fontSize: '146px', textAlign: 'center', color: 'white'}}>It will run</h1>
         
 
         </div>

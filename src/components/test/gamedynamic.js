@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Gamerigscore from '../gamerigscore/gamerigscore';
 import { Button } from '@material-ui/core';
 import { purple } from '@material-ui/core/colors';
-
+import axios from 'axios';
+import CircularIndeterminate from '../ui/progress';
 
 const gamesjson = [
     {title : "Astra Exodus system requirements",OS : "Windows 8 / 8.1 64 bit",Processor : "2.5 Ghz Intel Core 2 Quad Q8300 or equivalent",Memory : "4 GB RAM",Graphics : "1 GB nVidia Geforce GT460 or equivalent, 500 MB ATI HD4850 or equivalent",Storage : "4 GB available space",},
@@ -73,12 +74,37 @@ const gamesjson = [
     {title : "Free Company VR system requirements",OS : "Windows 7 SP1, Windows 8.1 or later, Windows 10",Processor : "Intel Core i5-4590/AMD FX 8350 equivalent or better",Memory : "4 GB RAM",Graphics : "NVIDIA GeForce GTX 1060, AMD Radeon RX 480 equivalent or better",Storage : "15 GB available space",},
     ]
 
+    var gamelist = [];
+
     const primary = purple[500];
 
 class Gamedynamic extends Component {
 
     state = {
-        game : ''
+        game : '',
+        progress: true,
+        first: ''
+    }
+
+    componentDidMount () {
+
+        const query = new URLSearchParams(this.props.location.search);
+        console.log(this.props.location.search.replace('?',''))
+        this.setState({first: this.props.location.search.replace('?','')},
+        () => console.log(this.state.first))
+
+
+
+        axios.get('http://canirunit.herokuapp.com/results')
+    .then(response => {
+      console.log(response)
+      gamelist = response.data
+      
+
+    }).catch(error => {
+        console.log(error)
+    })
+    this.setState({ progress: false })
     }
 
     handleChnge = (e) => {
@@ -106,23 +132,31 @@ class Gamedynamic extends Component {
     }
 
     render () {
+        let progresscircle = null;
+        if(this.state.progress) {
+            progresscircle = <CircularIndeterminate ></CircularIndeterminate>
+            
+        }
         return (
             <div style={{textAlign: 'center'}} className="gamedynamic">
 
             <div className="input-field" style={{paddingLeft:'99px', paddingRight: '99px'}}>
             {/* <label htmlFor="game" style={{textAlign: 'center'}}>Game</label> */}
             <h3 style={{textAlign: 'center',color: 'white'}}>Game</h3>
+            {progresscircle}
             <input type ="text" id="game" onChange={this.handleChnge} style={{color: 'white'}}></input>
             </div>
 
 
             <h1 style={{color: 'white'}}>Game list</h1>
-                {gamesjson.map(game => {
+                {gamelist.map(game => {
                     
                     return (
                         <div style={{textAlign: 'center', marginTop: '3px'}}>
 
-                        {game.title.replace(" system requirements","")[0] == this.state.game[0] ? 
+                        {this.state.progress ? <CircularIndeterminate></CircularIndeterminate> : null}
+
+                        {game.title.replace(" system requirements","")[0] == this.state.game[0] /* this.state.first[0] */ ? 
                     <Button variant="contained" color="primary" style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title)}>{game.title.replace(" system requirements","")}</Button>
                     
                      : null   } 
