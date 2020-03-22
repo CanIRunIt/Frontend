@@ -3,6 +3,7 @@ import axios from 'axios';
 import Rigscore from '../rigscore/rigscore';
 import Select from 'react-select';
 import GamerigScore from '../gamerigscore/gamerigscore';
+import { connect } from 'react-redux';
 
 
 const gpus = [
@@ -1207,6 +1208,7 @@ class Rigpost extends Component {
     componentDidMount () {
 
         console.log('Mounted')
+        console.log(this.props.gamecpu)
 
         var gpu = 'NVIDIA GeForce GTX 960'        
         
@@ -1433,4 +1435,11 @@ class Rigpost extends Component {
     }
 }
 
-export default Rigpost
+
+const mapSToProps = state => {
+    return {
+        gamecpu: state.cpu
+    }
+}
+
+export default connect(mapSToProps)(Rigpost);

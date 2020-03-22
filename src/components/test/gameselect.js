@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
+import { connect } from 'react-redux';
 
 var gamesjson = []
 var gamesjsonsort = []
@@ -104,7 +105,7 @@ class Gameselect extends React.Component {
 
 }
 
-gamepickHandler = (gametitle) => {
+gamepickHandler = (gametitle, cpuname) => {
   console.log("hey")
   console.log(gametitle);
 
@@ -112,10 +113,14 @@ gamepickHandler = (gametitle) => {
   console.log(this.state.game)
 
   const game = gametitle
+  const cpu = cpuname
   this.props.history.push({
       pathname: '/rigpost',
-      search: '?' + game
+      search: '?' + game,
+      cpu: '?' + cpu
   })
+
+  this.props.onCpuSet(cpu)
 
 
 }
@@ -149,7 +154,7 @@ duplicateHandler = (name) => {
     return (
       <div  key={title} style={{textAlign: 'center', marginTop: '3px'}} className="gamedynamic">
 
-      <Button variant="contained" color="primary" style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title)}>{game.title.replace(" system requirements","")}</Button>
+      <Button variant="contained" color="primary" style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title, game.Intel_CPU)}>{game.title.replace(" system requirements","")}</Button>
       </div>
     )
     }
@@ -173,7 +178,14 @@ duplicateHandler = (name) => {
 
 }
 
-export default Gameselect;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onCpuSet: (cpu) => dispatch({type: 'GAMECPU', value: cpu})
+  }
+}
+
+export default connect(null,mapDispatchToProps)(Gameselect);
 
 
 

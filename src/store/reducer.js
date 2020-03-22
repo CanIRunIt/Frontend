@@ -8,7 +8,11 @@ const initrig = {
         RAM: '8 GB',
         HD: '256 GB',
         OS: 'Windows 10'
-    }
+    },
+    cpu: '',
+    gpu: '',
+    ram: ''
+
 }
 
 
@@ -47,6 +51,31 @@ const reducer = (state = initrig, action) => {
             }
         }
     }
+
+
+
+    if(action.type === 'GAMECPU') {
+        return {
+            ...state.cpu,
+            cpu: action.value
+        }
+    }
+
+    if(action.type === 'GAMEGPU') {
+        return {
+            ...state.gpu,
+            gpu: action.value
+        }
+    }
+
+    if(action.type === 'GAMEMEM') {
+        return {
+            ...state.ram,
+            ram: action.value
+        }
+    }
+
+
     return state;
 };
 
