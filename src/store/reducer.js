@@ -9,9 +9,9 @@ const initrig = {
         HD: '256 GB',
         OS: 'Windows 10'
     },
-    cpu: '',
-    gpu: '',
-    ram: ''
+    cpu: 'Intel i3',
+    gpu: 'R7 240',
+    ram: '8 gb'
 
 }
 
@@ -56,8 +56,10 @@ const reducer = (state = initrig, action) => {
 
     if(action.type === 'GAMECPU') {
         return {
-            ...state.cpu,
-            cpu: action.value
+            ...state,
+            cpu: action.value[0],
+            gpu: action.value[1],
+            ram: action.value[2],
         }
     }
 

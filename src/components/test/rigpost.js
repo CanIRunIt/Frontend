@@ -1208,7 +1208,9 @@ class Rigpost extends Component {
     componentDidMount () {
 
         console.log('Mounted')
-        console.log(this.props.gamecpu)
+        console.log(this.props.gamememfromprops)
+        console.log(this.props.gamecpufromprops)
+        console.log(this.props.gamegpufromprops)
 
         var gpu = 'NVIDIA GeForce GTX 960'        
         
@@ -1346,6 +1348,14 @@ class Rigpost extends Component {
         return (
        
        <div className="container">
+
+       <div style={{color: 'white'}}>
+       <h1>{this.props.gamecpufromprops}</h1>
+       <h1>{this.props.gamegpufromprops}</h1>
+       <h1>{this.props.gamememfromprops}</h1>
+       </div>
+
+
        <h1 className="gametitle" style={{textAlign: 'center', marginTop: '3px'}}>{this.state.game.replace('requirements', 'requirements check')}</h1>
        
        
@@ -1436,9 +1446,11 @@ class Rigpost extends Component {
 }
 
 
-const mapSToProps = state => {
+const mapSToProps = (state) => {
     return {
-        gamecpu: state.cpu
+        gamecpufromprops: state.cpu,
+        gamegpufromprops: state.gpu,
+        gamememfromprops: state.ram
     }
 }
 

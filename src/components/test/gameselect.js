@@ -105,7 +105,7 @@ class Gameselect extends React.Component {
 
 }
 
-gamepickHandler = (gametitle, cpuname) => {
+gamepickHandler = (gametitle, cpuname, gpuname, ramname) => {
   console.log("hey")
   console.log(gametitle);
 
@@ -114,14 +114,24 @@ gamepickHandler = (gametitle, cpuname) => {
 
   const game = gametitle
   const cpu = cpuname
+  const gpu = gpuname
+  const ram = ramname
+
+
   this.props.history.push({
       pathname: '/rigpost',
       search: '?' + game,
       cpu: '?' + cpu
   })
 
-  this.props.onCpuSet(cpu)
-
+  let rigarray = [cpu, gpu, ram]
+  this.props.onCpuSet(rigarray)
+//  this.props.onGpuSet(gpu)
+ // this.props.onRamSet(ram)
+  
+ /*  console.log( this.props.onCpuSet(cpu),
+  this.props.onGpuSet(gpu),
+  this.props.onRamSet(ram)) */
 
 }
 
@@ -154,7 +164,7 @@ duplicateHandler = (name) => {
     return (
       <div  key={title} style={{textAlign: 'center', marginTop: '3px'}} className="gamedynamic">
 
-      <Button variant="contained" color="primary" style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title, game.Intel_CPU)}>{game.title.replace(" system requirements","")}</Button>
+      <Button variant="contained" color="primary" style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title, game.Intel_CPU, game.NVIDIA_Graphics, /* game.RAM */)}>{game.title.replace(" system requirements","")}</Button>
       </div>
     )
     }
@@ -181,7 +191,9 @@ duplicateHandler = (name) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onCpuSet: (cpu) => dispatch({type: 'GAMECPU', value: cpu})
+    onCpuSet: (cpu) => dispatch({type: 'GAMECPU', value: cpu}),
+  //  onGpuSet: (gpu) => dispatch({type: 'GAMEGPU', value: gpu}),
+  //  onRamSet: (ram) => dispatch({type: 'GAMEMEM', value: ram})
   }
 }
 
