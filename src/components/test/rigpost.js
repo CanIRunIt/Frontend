@@ -1191,11 +1191,11 @@ class Rigpost extends Component {
 
         gamecpu: '',
         gamegpu: '',
-        gameram: '',
+        gamemem: '',
 
         gamecpuscore: '',
         gamegpuscore: '',
-        gameramscore: '',
+        gamememscore: '',
 
 
     selectedOption: null,
@@ -1212,15 +1212,57 @@ class Rigpost extends Component {
         console.log(this.props.gamecpufromprops)
         console.log(this.props.gamegpufromprops)
 
-        var gpu = 'NVIDIA GeForce GTX 960'        
-        
-        gpu.replace("NVIDIA ", "")
-        console.log(gpu)
-        
-        axios.get('https://warm-island-31012.herokuapp.com/gpuscores/' + gpu)
+        this.setState({
+            gamecpu: 'Intel '+ this.props.gamecpufromprops.replace('GHz',' GHz'),
+            gamegpu: this.props.gamegpufromprops,
+            gamemem: this.props.gamememfromprops.replace(' GB','GB'),
+            
+        },
+        /*() => console.log(this.state.gamecpu,this.state.gamegpu,this.state.gamemem)) */
+
+        () =>     axios.get('https://warm-island-31012.herokuapp.com/cpuscoresfinl/' + this.state.gamecpu)
         .then(response => {
-            console.log(response.data)
-        })
+            console.log(response)
+            this.setState({
+                gamecpuscore: response.data.score
+            })
+            }).catch(err => {
+                console.log(err)
+        }),
+
+        axios.get('https://warm-island-31012.herokuapp.com/gpuscoresfinl/' + this.state.gamegpu)
+        .then(response => {
+            console.log(response.data.score)
+            this.setState({
+                gamegpuscore: response.data.score
+            })
+            }).catch(err => {
+                console.log(err)
+        }),
+
+        axios.get('https://warm-island-31012.herokuapp.com/ramscores/' + this.state.gamemem)
+        .then(response => {
+            this.setState({
+                gamememscore: response.data.score
+            })
+            }).catch(err => {
+                console.log(err)
+        }),
+
+        console.log(this.state.gamecpuscore,this.state.gamegpuscore,this.state.gamememscore)
+
+    )
+
+
+       
+
+       
+    
+
+        
+
+        
+        
 
 /* 
         console.log(this.props)
@@ -1349,10 +1391,13 @@ class Rigpost extends Component {
        
        <div className="container">
 
-       <div style={{color: 'white'}}>
-       <h1>{this.props.gamecpufromprops}</h1>
-       <h1>{this.props.gamegpufromprops}</h1>
-       <h1>{this.props.gamememfromprops}</h1>
+       <div style={{color: 'white', fontFamily: 'ZCOOL QingKe HuangYou', textAlign:'center', marginTop: '8px'}}>
+      
+
+       <h1>{/* 'Intel '+  */this.state.gamecpu/* .replace('GHz',' GHz') */}</h1>
+       <h1>{this.state.gamegpu}</h1>
+       <h1>{this.state.gamemem}</h1>
+
        </div>
 
 

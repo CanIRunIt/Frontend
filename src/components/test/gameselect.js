@@ -164,7 +164,7 @@ duplicateHandler = (name) => {
     return (
       <div  key={title} style={{textAlign: 'center', marginTop: '3px'}} className="gamedynamic">
 
-      <Button variant="contained" color="primary" style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title, game.Intel_CPU, game.NVIDIA_Graphics, /* game.RAM */)}>{game.title.replace(" system requirements","")}</Button>
+      <Button variant="contained" color="primary" style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title, game.Intel_CPU, game.NVIDIA_Graphics, game.RAM)}>{game.title.replace(" system requirements","")}</Button>
       </div>
     )
     }
