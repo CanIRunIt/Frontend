@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React,{ Component } from 'react';
 import axios from 'axios';
 import Rigscore from '../rigscore/rigscore';
@@ -1220,37 +1221,7 @@ class Rigpost extends Component {
         },
         /*() => console.log(this.state.gamecpu,this.state.gamegpu,this.state.gamemem)) */
 
-        () =>     axios.get('https://warm-island-31012.herokuapp.com/cpuscoresfinl/' + this.state.gamecpu)
-        .then(response => {
-            console.log(response)
-            this.setState({
-                gamecpuscore: response.data.score
-            })
-            }).catch(err => {
-                console.log(err)
-        }),
-
-        axios.get('https://warm-island-31012.herokuapp.com/gpuscoresfinl/' + this.state.gamegpu)
-        .then(response => {
-            console.log(response.data.score)
-            this.setState({
-                gamegpuscore: response.data.score
-            })
-            }).catch(err => {
-                console.log(err)
-        }),
-
-        axios.get('https://warm-island-31012.herokuapp.com/ramscores/' + this.state.gamemem)
-        .then(response => {
-            this.setState({
-                gamememscore: response.data.score
-            })
-            }).catch(err => {
-                console.log(err)
-        }),
-
-        console.log(this.state.gamecpuscore,this.state.gamegpuscore,this.state.gamememscore)
-
+        () => this.rigscoreHandlergame()
     )
 
 
@@ -1279,6 +1250,36 @@ class Rigpost extends Component {
             })
         }) */
  }
+    rigscoreHandlergame = () => {
+        axios.get('https://warm-island-31012.herokuapp.com/cpuscoresfinl/' + this.state.gamecpu)
+        .then(response => {
+            console.log(response)
+            this.setState({
+                gamecpuscore: response.data.score
+            }, () => console.log(this.state.gamecpuscore))
+            }).catch(err => {
+                console.log(err)
+        }),
+
+        axios.get('https://warm-island-31012.herokuapp.com/gpuscoresfinl/' +  this.state.gamegpu)
+        .then(response => {
+            console.log(response.data.score)
+            this.setState({
+                gamegpuscore: response.data.score
+            },console.log(this.state.gamegpuscore))
+            }).catch(err => {
+                console.log(err)
+        }),
+
+        axios.get('https://warm-island-31012.herokuapp.com/ramscores/' + this.state.gamemem)
+        .then(response => {
+            this.setState({
+                gamememscore: response.data.score
+            },console.log(this.state.gamememscore))
+            }).catch(err => {
+                console.log(err)
+        })
+    }
 
 
     handleChnge = (e) => {
@@ -1405,10 +1406,10 @@ class Rigpost extends Component {
        
        
        {this.state.gamegpuscore ?
-       <GamerigScore ramscore={this.state.ramscore}
+       <Rigscore 
                           cpuscore={this.state.gamecpuscore / 14.13}
                           gpuscore={this.state.gamegpuscore / 95.55}
-                          ramscore={this.state.gameramscore / 0.16}></GamerigScore> : null }
+                          ramscore={this.state.gamememscore / 0.16}></Rigscore> : null }
 
             <form onSubmit={this.handlePost} className="white">
             <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Can I run it</h5>
