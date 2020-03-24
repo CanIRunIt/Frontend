@@ -29,7 +29,7 @@ class Gameswitch extends Component {
             if(one.typeof == "0" ){
                 return <Button variant="contained" color="primary" onClick={() => this.clicked(one)}>{one}</Button>
             } else {
-                return <Button style={{backgroundColor: 'yellowgreen'}} variant="contained"  onClick={() => this.clicked(one)}>{one}</Button>
+                return <Button style={{marginTop: '3px', background: 'linear-gradient(to right, #1fa2ff, #12d8fa)',  fontFamily: 'ZCOOL QingKe HuangYou'}} variant="contained" onClick={() => this.clicked(one)}>{one}</Button>
             }
             }) }
             </div>

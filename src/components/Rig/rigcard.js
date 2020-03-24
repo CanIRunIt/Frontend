@@ -29,7 +29,7 @@ export default function MediaCard(props) {
   const classes = useStyles();
 
   return (
-      <div className="container" style={{textAlign: 'center'}}>
+      <div className="container" style={{textAlign: 'center',fontFamily: 'Yatra One'}}>
     <Card className={classes.root} color="primary" style={{backgroundColor: 'deepOrange'}}>
       <CardActionArea>
         <CardMedia
@@ -39,19 +39,19 @@ export default function MediaCard(props) {
         />
         <CardContent >
           
-          <Typography variant="h2" color="textSecondary" component="p">
+          <Typography style={{ fontFamily: 'ZCOOL QingKe HuangYou'}} variant="h2" color="textSecondary" component="p">
            Processor  <div style={{color: 'darkgrey'}}> {props.cpu}  </div>
           </Typography>
-          <Typography variant="h2" color="textSecondary" component="p">
+          <Typography style={{ fontFamily: 'ZCOOL QingKe HuangYou'}} variant="h2" color="textSecondary" component="p">
            Graphic Card <div style={{color: 'darkgrey'}}> {props.gpu} </div>
           </Typography>
-          <Typography variant="h2" color="textSecondary" component="p">
+          <Typography style={{ fontFamily: 'ZCOOL QingKe HuangYou'}} variant="h2" color="textSecondary" component="p">
             Memory <div style={{color: 'darkgrey'}}>  {props.ram} </div>
           </Typography>
-          <Typography variant="h2" color="textSecondary" component="p">
+          <Typography style={{ fontFamily: 'ZCOOL QingKe HuangYou'}} variant="h2" color="textSecondary" component="p">
             Hard Disk Space <div style={{color: 'darkgrey'}}>  {props.hd} </div>
           </Typography>
-          <Typography variant="h2" color="textSecondary" component="p">
+          <Typography style={{ fontFamily: 'ZCOOL QingKe HuangYou'}} variant="h2" color="textSecondary" component="p">
             Operating System <div style={{color: 'darkgrey'}}> {props.os} </div>
           </Typography>
         </CardContent>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Button } from '@material-ui/core';
 import { connect } from 'react-redux';
+import CircularIndeterminate from '../ui/progress';
 
 var gamesjson = []
 var gamesjsonsort = []
@@ -16,7 +17,8 @@ class Gameselect extends React.Component {
     ermessage : false,
     games: false,
     first: '',
-    dupname: ''
+    dupname: '',
+    progress: true
     
   };
   handleChange = selectedOption => {
@@ -140,9 +142,14 @@ duplicateHandler = (name) => {
 
 }
 
+progressHandler() {
+  this.setState({
+    progress: false
+  })
+}
    
   render() {
-    let games = null;
+    let games = <div className="container" style={{textAlign: 'center', display: 'flex', justifyContent: 'space-around'}}> <CircularIndeterminate style={{textAlign: 'center'}}></CircularIndeterminate> </div> 
     if(this.state.games){
    
    
@@ -164,7 +171,7 @@ duplicateHandler = (name) => {
     return (
       <div  key={title} style={{textAlign: 'center', marginTop: '3px'}} className="gamedynamic">
 
-      <Button variant="contained" color="primary" style={{textAlign: 'center', width: '60%'}} onClick={() => this.gamepickHandler(game.title, game.Intel_CPU, game.NVIDIA_Graphics, game.RAM)}>{game.title.replace(" system requirements","")}</Button>
+      <Button variant="contained" style={{background: 'linear-gradient(to right, #fdfc47, #24fe41)',textAlign: 'center', width: '60%', /* fontFamily: 'Yatra One' */ fontFamily: 'ZCOOL QingKe HuangYou'}} onClick={() => this.gamepickHandler(game.title, game.Intel_CPU, game.NVIDIA_Graphics, game.RAM)}>{game.title.replace(" system requirements","")}</Button>
       </div>
     )
     }
@@ -173,12 +180,12 @@ duplicateHandler = (name) => {
        }
        
      
-    })
+    }, () => this.progressHandler())
 }
 
-  return ( <div>
-    <h1 style={{color: 'white', textAlign: 'center'}}>games</h1>
-    <div>
+  return ( <div style={{ fontFamily: 'ZCOOL QingKe HuangYou'}}>
+    <h1 style={{color: 'white', textAlign: 'center', marginTop:'1%'}}>choose a game to run the test</h1>
+    <div>      
     {games}
     </div>
     </div>
