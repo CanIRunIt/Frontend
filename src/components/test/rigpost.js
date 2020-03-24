@@ -1412,11 +1412,19 @@ class Rigpost extends Component {
                           cpuscore={this.state.gamecpuscore / 14.13}
                           gpuscore={this.state.gamegpuscore / 95.55}
                           ramscore={this.state.gamememscore / 0.16}></GamerigScore> : null }
-
+        {this.state.cpuscore ?
+                <Rigscore 
+                ramscore={this.state.ramscore / 0.16}
+                cpuscore={this.state.cpuscore / 14.13}
+                gpuscore={this.state.gpuscore / 95.55}
+                /> : null }
+        
+        
             <form onSubmit={this.handlePost} className="white">
             <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Can I run it</h5>
             
-          
+            
+
         {/*    <div className="input-field">
             <label htmlFor="cpu">CPU</label>
             <input type ="text" id="cpu" onChange={this.handleChnge}></input>
@@ -1469,12 +1477,7 @@ class Rigpost extends Component {
             
             
         
-            {this.state.cpuscore ?
-                <Rigscore 
-                ramscore={this.state.ramscore / 0.16}
-                cpuscore={this.state.cpuscore / 14.13}
-                gpuscore={this.state.gpuscore / 95.55}
-                /> : null }
+            
 
         
 
