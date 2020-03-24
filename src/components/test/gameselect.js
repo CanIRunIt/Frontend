@@ -32,7 +32,7 @@ class Gameselect extends React.Component {
         () => console.log(this.state.first))
 
 
-    axios.get('http://canirunit.herokuapp.com/results')
+    axios.get('https://canirunit.herokuapp.com/results')
     .then(response => {
       console.log(response)
       gamesjson = response.data
@@ -171,7 +171,7 @@ duplicateHandler = (name) => {
     
     {this.duplicateHandler(game.title)}
        }
-     
+       
      
     })
 }

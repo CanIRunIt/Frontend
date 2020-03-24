@@ -1408,12 +1408,17 @@ class Rigpost extends Component {
        
        
        {this.state.gamegpuscore ?
-       <GamerigScore
+       <GamerigScore      cpu={this.state.gamecpu}
+                          gpu={this.state.gamegpu}
+                          ram={this.state.gamemem}
                           cpuscore={this.state.gamecpuscore / 14.13}
                           gpuscore={this.state.gamegpuscore / 95.55}
                           ramscore={this.state.gamememscore / 0.16}></GamerigScore> : null }
         {this.state.cpuscore ?
                 <Rigscore 
+                cpu={this.state.gamecpu}
+                gpu={this.state.gamegpu}
+                ram={this.state.gamemem}
                 ramscore={this.state.ramscore / 0.16}
                 cpuscore={this.state.cpuscore / 14.13}
                 gpuscore={this.state.gpuscore / 95.55}
