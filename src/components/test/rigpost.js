@@ -1395,6 +1395,8 @@ class Rigpost extends Component {
        <div style={{color: 'white', fontFamily: 'ZCOOL QingKe HuangYou', textAlign:'center', marginTop: '8px'}}>
       
 
+      <h1 style={{textAlign: 'center', color: 'white'}}>Minimum requirements rig</h1>
+
        <h1>{/* 'Intel '+  */this.state.gamecpu/* .replace('GHz',' GHz') */}</h1>
        <h1>{this.state.gamegpu}</h1>
        <h1>{this.state.gamemem}</h1>
@@ -1406,10 +1408,10 @@ class Rigpost extends Component {
        
        
        {this.state.gamegpuscore ?
-       <Rigscore 
+       <GamerigScore
                           cpuscore={this.state.gamecpuscore / 14.13}
                           gpuscore={this.state.gamegpuscore / 95.55}
-                          ramscore={this.state.gamememscore / 0.16}></Rigscore> : null }
+                          ramscore={this.state.gamememscore / 0.16}></GamerigScore> : null }
 
             <form onSubmit={this.handlePost} className="white">
             <h5 className="grey-text text-darken-3" style={{ textAlign: 'center' }}>Can I run it</h5>
