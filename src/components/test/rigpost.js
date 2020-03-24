@@ -5,6 +5,7 @@ import Rigscore from '../rigscore/rigscore';
 import Select from 'react-select';
 import GamerigScore from '../gamerigscore/gamerigscore';
 import { connect } from 'react-redux';
+import RequestProgress from '../ui/requestprogress';
 
 
 const gpus = [
@@ -1381,6 +1382,18 @@ class Rigpost extends Component {
 
 
     render () {
+
+    let gamerigscore = <RequestProgress></RequestProgress>
+
+    if(this.state.gamegpuscore){
+        gamerigscore = <GamerigScore      
+        cpu={this.state.gamecpu}
+        gpu={this.state.gamegpu}
+        ram={this.state.gamemem}
+        cpuscore={this.state.gamecpuscore / 14.13}
+        gpuscore={this.state.gamegpuscore / 95.55}
+        ramscore={this.state.gamememscore / 0.16}></GamerigScore>
+    }
         
     const { selectedOption } = this.state;
     const { selectedOptioncpu } = this.state;
@@ -1407,13 +1420,14 @@ class Rigpost extends Component {
        <h1 className="gametitle" style={{textAlign: 'center', marginTop: '3px'}}>{this.state.game.replace('requirements', 'requirements check')}</h1>
        
        
-       {this.state.gamegpuscore ?
+       {/* this.state.gamegpuscore ?
        <GamerigScore      cpu={this.state.gamecpu}
                           gpu={this.state.gamegpu}
                           ram={this.state.gamemem}
                           cpuscore={this.state.gamecpuscore / 14.13}
                           gpuscore={this.state.gamegpuscore / 95.55}
-                          ramscore={this.state.gamememscore / 0.16}></GamerigScore> : null }
+                          ramscore={this.state.gamememscore / 0.16}></GamerigScore> : null */ }
+        {gamerigscore}
         {this.state.cpuscore ?
                 <Rigscore 
                 cpu={this.state.gamecpu}
